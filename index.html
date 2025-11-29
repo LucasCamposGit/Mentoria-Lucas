@@ -1,256 +1,356 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Mentoria de Aprendizado de Idiomas</title>
-  <link rel="stylesheet" href="style.css">
-    <style>
-        *,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+  <meta charset="UTF-8" />
+  <title>Mentoria de Inglês – Método Natural</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      font-size: 16px;
+    }
 
-body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    sans-serif;
-  background-color: #050505;
-  color: #f5f5f5;
-}
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-.page {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      line-height: 1.6;
+      color: #111827;
+      background-color: #f9fafb;
+    }
 
-/* HERO */
+    .page {
+      min-height: 100vh;
+      padding: 1.5rem 1rem 3rem;
+    }
 
-.hero {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 60px 8vw 40px;
-  gap: 15rem;
-}
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 2rem 1.5rem;
+      border-radius: 0.75rem;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+    }
 
-.hero-content {
-  max-width: 480px;
-}
+    header {
+      margin-bottom: 2rem;
+    }
 
-.hero-title {
-  font-size: 40px;
-  line-height: 1.1;
-  letter-spacing: 0.04em;
-  font-weight: 700;
-  margin-bottom: 24px;
-}
+    header h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+    }
 
-.hero-subtitle {
-  font-size: 18px;
-  line-height: 1.5;
-  color: #d0d0d0;
-  margin-bottom: 32px;
-}
+    header p {
+      color: #6b7280;
+      font-size: 0.95rem;
+    }
 
-.hero-image img {
-  display: block;
-  max-width: 340px;
-  width: 100%;
-  height: auto;
-  border-radius: 12px;
-}
+    h2 {
+      font-size: 1.3rem;
+      margin: 2rem 0 0.75rem;
+      font-weight: 700;
+    }
 
-/* BUTTONS */
+    h3 {
+      font-size: 1.05rem;
+      margin: 1.25rem 0 0.5rem;
+      font-weight: 600;
+    }
 
-.btn-primary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 14px 38px;
-  border-radius: 8px;
-  gap: 5px;
-  background-color: #f3c88f;
-  color: #111;
-  font-weight: 600;
-  font-size: 16px;
-  text-decoration: none;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  transition: transform 0.15s ease, box-shadow 0.15s ease,
-    background-color 0.15s ease;
-}
+    p {
+      margin-bottom: 0.9rem;
+      font-size: 0.98rem;
+    }
 
-.btn-primary:hover {
-  background-color: #e6b777;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
-  transform: translateY(-1px);
-}
+    ul {
+      margin: 0.25rem 0 1rem 1.25rem;
+      padding-left: 0.25rem;
+    }
 
-.btn-large {
-  padding-inline: 60px;
-}
+    li {
+      margin-bottom: 0.35rem;
+      font-size: 0.96rem;
+    }
 
-/* COMO FUNCIONA */
+    .highlight {
+      font-weight: 600;
+    }
 
-.steps {
-  text-align: center;
-  padding: 40px 8vw 70px;
-}
+    .underline {
+      text-decoration: underline;
+    }
 
-.section-title {
-  font-size: 26px;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  margin-bottom: 36px;
-}
+    .tagline {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #9ca3af;
+      margin-bottom: 0.5rem;
+    }
 
-.steps-grid {
-  display: flex;
-  justify-content: center;
-  gap: 60px;
-  margin-bottom: 40px;
-  flex-wrap: wrap;
-}
+    .divider {
+      margin: 1.75rem 0;
+      height: 1px;
+      background: linear-gradient(to right, transparent, #e5e7eb, transparent);
+    }
 
-.step {
-  min-width: 180px;
-}
+    .cta-block {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid #e5e7eb;
+    }
 
-.step-number {
-  font-size: 32px;
-  font-weight: 600;
-  margin-bottom: 10px;
-}
+    .cta-text {
+      font-weight: 600;
+    }
 
-.step-title {
-  font-size: 18px;
-  margin-bottom: 8px;
-}
+    @media (max-width: 600px) {
+      .container {
+        padding: 1.5rem 1.1rem;
+      }
 
-.step-text {
-  font-size: 15px;
-  line-height: 1.5;
-  color: #d0d0d0;
-}
+      header h1 {
+        font-size: 1.6rem;
+      }
 
-.cta-text {
-  font-size: 22px;
-  font-weight: 600;
-  margin-bottom: 22px;
-}
+      h2 {
+        font-size: 1.15rem;
+      }
 
-/* RESPONSIVO */
-
-@media (max-width: 900px) {
-  .hero {
-    flex-direction: column-reverse;
-    text-align: center;
-  }
-
-  .hero-content {
-    align-items: center;
-  }
-
-  .hero-title {
-    font-size: 34px;
-  }
-}
-
-@media (max-width: 600px) {
-  .hero {
-    padding-inline: 6vw;
-  }
-
-  .steps {
-    padding-inline: 6vw;
-  }
-
-  .hero-title {
-    font-size: 30px;
-  }
-
-  .hero-subtitle {
-    font-size: 16px;
-  }
-}
-
-    </style>
+      body {
+        background-color: #ffffff;
+      }
+    }
+  </style>
 </head>
 <body>
-  <main class="page">
+  <div class="page">
+    <div class="container">
+      <header>
+        <div class="tagline">Guia 1</div>
+        <h1>Mentoria de Inglês com o <span class="underline">Método Natural</span></h1>
+        <p>Carta de boas-vindas para quem quer fluência real, com processo natural e previsível.</p>
+      </header>
 
-    <!-- HERO -->
-    <section class="hero">
-      <div class="hero-content">
-        <h1 class="hero-title">
-          MENTORIA DE<br>
-          APRENDIZADO<br>
-          DE IDIOMAS
-        </h1>
-
-        <p class="hero-subtitle">
-          Um método comprovado para<br>
-          adquirir um novo idioma
+      <section>
+        <h2>Antes de começar, precisamos de um acordo</h2>
+        <p><span class="highlight">Primeiro:</span> tudo que você precisa saber sobre mim está aqui.</p>
+        <p>
+          <span class="highlight">Segundo:</span> meu método não é “inglês em 12 semanas”, não é gramática, não é macete, não é milagre.
+          É <span class="highlight">aquisição natural da língua</span>, integrada à sua rotina — sem você precisar separar horas extras para isso.
+        </p>
+        <p>
+          Se você busca atalho… <span class="highlight">pode fechar essa aba.</span>
         </p>
 
-        <a href="https://wa.me/5515981298236?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20como%20funciona%20a%20mentoria" class="btn-primary"> 
-          <svg fill="#000000" width="28px" height="28px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" stroke="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>whatsapp</title> <path d="M26.576 5.363c-2.69-2.69-6.406-4.354-10.511-4.354-8.209 0-14.865 6.655-14.865 14.865 0 2.732 0.737 5.291 2.022 7.491l-0.038-0.070-2.109 7.702 7.879-2.067c2.051 1.139 4.498 1.809 7.102 1.809h0.006c8.209-0.003 14.862-6.659 14.862-14.868 0-4.103-1.662-7.817-4.349-10.507l0 0zM16.062 28.228h-0.005c-0 0-0.001 0-0.001 0-2.319 0-4.489-0.64-6.342-1.753l0.056 0.031-0.451-0.267-4.675 1.227 1.247-4.559-0.294-0.467c-1.185-1.862-1.889-4.131-1.889-6.565 0-6.822 5.531-12.353 12.353-12.353s12.353 5.531 12.353 12.353c0 6.822-5.53 12.353-12.353 12.353h-0zM22.838 18.977c-0.371-0.186-2.197-1.083-2.537-1.208-0.341-0.124-0.589-0.185-0.837 0.187-0.246 0.371-0.958 1.207-1.175 1.455-0.216 0.249-0.434 0.279-0.805 0.094-1.15-0.466-2.138-1.087-2.997-1.852l0.010 0.009c-0.799-0.74-1.484-1.587-2.037-2.521l-0.028-0.052c-0.216-0.371-0.023-0.572 0.162-0.757 0.167-0.166 0.372-0.434 0.557-0.65 0.146-0.179 0.271-0.384 0.366-0.604l0.006-0.017c0.043-0.087 0.068-0.188 0.068-0.296 0-0.131-0.037-0.253-0.101-0.357l0.002 0.003c-0.094-0.186-0.836-2.014-1.145-2.758-0.302-0.724-0.609-0.625-0.836-0.637-0.216-0.010-0.464-0.012-0.712-0.012-0.395 0.010-0.746 0.188-0.988 0.463l-0.001 0.002c-0.802 0.761-1.3 1.834-1.3 3.023 0 0.026 0 0.053 0.001 0.079l-0-0.004c0.131 1.467 0.681 2.784 1.527 3.857l-0.012-0.015c1.604 2.379 3.742 4.282 6.251 5.564l0.094 0.043c0.548 0.248 1.25 0.513 1.968 0.74l0.149 0.041c0.442 0.14 0.951 0.221 1.479 0.221 0.303 0 0.601-0.027 0.889-0.078l-0.031 0.004c1.069-0.223 1.956-0.868 2.497-1.749l0.009-0.017c0.165-0.366 0.261-0.793 0.261-1.242 0-0.185-0.016-0.366-0.047-0.542l0.003 0.019c-0.092-0.155-0.34-0.247-0.712-0.434z"></path> </g></svg>
-          <p>COMECE AGORA</p>
-        </a>
-      </div>
+        <p>
+          Essa é a minha carta de boas-vindas, refinada várias vezes desde que comecei a ensinar o que realmente funciona.
+          E sim, você talvez veja versões parecidas por aí — acontece quando um método começa a incomodar quem só vende promessa fácil.
+        </p>
 
-      <div class="hero-image">
-        <!-- Troque "pessoa.png" pela sua imagem -->
-        <img src="foto.png" class="mentor-img" alt="Mentor sorrindo">
-      </div>
-    </section>
+        <p>
+          E se ainda não aconteceu com você, calma.
+          Aqui você vai entender como aprender inglês de um jeito tão orgânico que se torna
+          <span class="highlight">impossível voltar para aquele modelo pesado de decorar, revisar, esquecer.</span>
+        </p>
 
-    <!-- COMO FUNCIONA -->
-  <section class="steps">
-  <h2 class="section-title">COMO FUNCIONA</h2>
+        <p>
+          O que eu ensino aqui <span class="highlight">não é método rápido</span>.
+          É um processo real — <span class="highlight">de 1 a 2 anos</span> — construído sobre como o cérebro absorve uma língua de verdade:
+          através de <span class="highlight">input compreensível</span> inserido no seu dia a dia.
+        </p>
 
-  <div class="steps-grid">
+        <p>
+          Um processo estável, leve e extremamente eficiente.
+          Foi assim que eu conquistei <span class="highlight">fluência completa</span> — e é isso que ensino a cada pessoa que passa pela mentoria.
+        </p>
+      </section>
 
-    <div class="step">
-      <div class="step-number">1</div>
-      <h3 class="step-title">Aprenda com o que gosta</h3>
-      <p class="step-text">
-        Séries, músicas, filmes, vídeos e podcasts —<br>
-        tudo real e adaptado ao seu nível.
-      </p>
+      <div class="divider"></div>
+
+      <section>
+        <h2>O Método Natural</h2>
+        <p>
+          O Método Natural não exige que você estude inglês.
+          Ele exige que você <span class="highlight">viva inglês</span>, gradualmente, sem mudar quem você é.
+        </p>
+
+        <p>
+          Você continua assistindo futebol, dorama, anime, música, vídeos, podcasts… mas agora em uma versão que seu cérebro consegue
+          entender e crescer em cima.
+        </p>
+
+        <p>
+          Nada artificial. Nada forçado. E principalmente:
+          <span class="highlight">nada que exija tempo além do que você já usa para lazer.</span>
+        </p>
+
+        <p>
+          Você não precisa falar desde o primeiro dia — no Método Natural, a fala surge como
+          <span class="highlight">consequência inevitável</span> de meses de compreensão acumulada.
+        </p>
+
+        <p>
+          Quando o cérebro está pronto, você percebe que já consegue formar frases, reagir, entender… e só aí a fala começa a fluir sem esforço.
+        </p>
+
+        <p>
+          É assim que funciona para qualquer pessoa com consistência:
+          <span class="highlight">primeiro você entende muito. Depois você fala bem.</span>
+        </p>
+      </section>
+
+      <div class="divider"></div>
+
+      <section>
+        <h2>Para quem é — e para quem não é</h2>
+
+        <h3>NÃO é para quem:</h3>
+        <ul>
+          <li>quer resultado rápido;</li>
+          <li>busca gramática, regra e memorização;</li>
+          <li>procura fórmula mágica;</li>
+          <li>não vai colocar inglês no cotidiano;</li>
+          <li>se ilude com promessas de 3 meses.</li>
+        </ul>
+
+        <h3>É para quem:</h3>
+        <ul>
+          <li>precisa aprender inglês de forma sólida em 1–2 anos;</li>
+          <li>entende que fluência é construída, não acelerada;</li>
+          <li>aceita um processo natural, constante e previsível;</li>
+          <li>está disposto a transformar seus hábitos de lazer em aprendizado;</li>
+          <li>quer leveza, mas não foge da responsabilidade da consistência.</li>
+        </ul>
+
+        <p>Se isso soa como você, continue.</p>
+      </section>
+
+      <div class="divider"></div>
+
+      <section>
+        <h2>Cenário imaginado</h2>
+        <p>
+          Você acorda, pega o celular e dá play em algo que já veria de qualquer forma — só que agora em inglês,
+          <span class="highlight">do jeito certo, no nível certo.</span>
+          Um vídeo, um capítulo, um trecho, um podcast curto.
+        </p>
+
+        <p>
+          Com o tempo, padrões começam a se repetir.
+          Frases que antes eram um borrão passam a fazer sentido.
+          Você entende diálogos inteiros sem traduzir na cabeça.
+        </p>
+
+        <p>
+          A música que antes era só ritmo vira mensagem.
+          As séries fluem.
+          O ouvido destrava.
+        </p>
+
+        <p>
+          E o mais importante:
+          <span class="highlight">você não está “estudando”. Você está vivendo.</span>
+        </p>
+
+        <p>
+          Agora imagine isso por meses. Imagine isso por um ano. Imagine isso por dois.
+        </p>
+
+        <p>
+          A fluência que nasce desse processo não vai embora.
+          Porque ela não é decorada. <span class="highlight">Ela é adquirida.</span>
+        </p>
+
+        <p>
+          Sem cronograma sufocante. Sem cobrança artificial. Sem exercícios repetitivos e vazios.
+          Apenas clareza, direção e constância.
+        </p>
+      </section>
+
+      <div class="divider"></div>
+
+      <section>
+        <h2>Como funciona a mentoria</h2>
+        <p>
+          A mentoria é <span class="highlight">1:1</span>.
+          Nós conversamos, eu entendo sua rotina, seus gostos, seus interesses e suas responsabilidades.
+        </p>
+
+        <p>
+          A partir disso, construo com você
+          <span class="highlight">um plano de aquisição que encaixa na sua vida real</span> — não tiro nada de você, só reorganizo o que você já faz.
+        </p>
+
+        <p>Eu te mostro exatamente:</p>
+        <ul>
+          <li>o que consumir;</li>
+          <li>como consumir;</li>
+          <li>quando mudar de nível;</li>
+          <li>quando repetir;</li>
+          <li>quando avançar;</li>
+          <li>e como medir sua evolução sem ansiedade.</li>
+        </ul>
+
+        <p>
+          Se necessário, eu mesmo preparo input compreensível personalizado.
+          Mas o foco é outro:
+          <span class="highlight">direção contínua</span>, ajustes ao longo do tempo e clareza total sobre o caminho até a fluência.
+        </p>
+
+        <p>
+          Não é curso gravado. Não é pacote pronto.
+          É desenvolvimento individual. Por isso, o número de pessoas é baixo — e eu prefiro assim.
+        </p>
+      </section>
+
+      <div class="divider"></div>
+
+      <section>
+        <h2>Eu escolho com quem caminho</h2>
+        <p>
+          Até hoje, <span class="highlight">15 pessoas</span> passaram comigo nesse processo — e todas foram selecionadas a dedo.
+        </p>
+
+        <p>
+          Não porque eu queira exclusividade… mas porque o Método Natural precisa de comprometimento real,
+          paciência, visão de longo prazo e maturidade para entender que fluência não nasce de atalho.
+        </p>
+
+        <p>
+          Vender por vender nunca foi o meu jogo.
+          Meu propósito é claro:
+          <span class="highlight">levar pessoas comuns a conquistar inglês real — com um processo natural, leve e definitivo.</span>
+        </p>
+
+        <div class="cta-block">
+          <p class="cta-text">
+            Se depois de ler até aqui você sentiu que isso faz sentido para a sua vida → 
+            <span class="underline">me envie uma mensagem privada dizendo “quero entrar no processo”.</span>
+          </p>
+          <p>
+            Eu vou analisar sua rotina, seus objetivos e sua disposição.
+            Se fizer sentido para nós dois, vamos caminhar juntos.
+          </p>
+          <p>
+            Com direção, constância e um inglês que finalmente entra — de verdade.
+          </p>
+          <p class="highlight">Te vejo do outro lado.</p>
+        </div>
+      </section>
     </div>
-
-    <div class="step">
-      <div class="step-number">2</div>
-      <h3 class="step-title">Use o método certo para você</h3>
-      <p class="step-text">
-        Te mostro como escolher os melhores materiais<br>
-        e aprender naturalmente, sem decoreba.
-      </p>
-    </div>
-
-    <div class="step">
-      <div class="step-number">3</div>
-      <h3 class="step-title">Pratique com IA e evolua</h3>
-      <p class="step-text">
-        Converse, revise vocabulário e tire dúvidas<br>
-        usando IA — no seu ritmo e sem pressão.
-      </p>
-    </div>
-
   </div>
 
-      <p class="cta-text">Pronto para falar um novo idioma?</p>
-
-      <a href="https://wa.me/5515981298236?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20como%20funciona%20a%20mentoria" class="btn-primary btn-large"> 
-          <svg fill="#000000" width="28px" height="28px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" stroke="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>whatsapp</title> <path d="M26.576 5.363c-2.69-2.69-6.406-4.354-10.511-4.354-8.209 0-14.865 6.655-14.865 14.865 0 2.732 0.737 5.291 2.022 7.491l-0.038-0.070-2.109 7.702 7.879-2.067c2.051 1.139 4.498 1.809 7.102 1.809h0.006c8.209-0.003 14.862-6.659 14.862-14.868 0-4.103-1.662-7.817-4.349-10.507l0 0zM16.062 28.228h-0.005c-0 0-0.001 0-0.001 0-2.319 0-4.489-0.64-6.342-1.753l0.056 0.031-0.451-0.267-4.675 1.227 1.247-4.559-0.294-0.467c-1.185-1.862-1.889-4.131-1.889-6.565 0-6.822 5.531-12.353 12.353-12.353s12.353 5.531 12.353 12.353c0 6.822-5.53 12.353-12.353 12.353h-0zM22.838 18.977c-0.371-0.186-2.197-1.083-2.537-1.208-0.341-0.124-0.589-0.185-0.837 0.187-0.246 0.371-0.958 1.207-1.175 1.455-0.216 0.249-0.434 0.279-0.805 0.094-1.15-0.466-2.138-1.087-2.997-1.852l0.010 0.009c-0.799-0.74-1.484-1.587-2.037-2.521l-0.028-0.052c-0.216-0.371-0.023-0.572 0.162-0.757 0.167-0.166 0.372-0.434 0.557-0.65 0.146-0.179 0.271-0.384 0.366-0.604l0.006-0.017c0.043-0.087 0.068-0.188 0.068-0.296 0-0.131-0.037-0.253-0.101-0.357l0.002 0.003c-0.094-0.186-0.836-2.014-1.145-2.758-0.302-0.724-0.609-0.625-0.836-0.637-0.216-0.010-0.464-0.012-0.712-0.012-0.395 0.010-0.746 0.188-0.988 0.463l-0.001 0.002c-0.802 0.761-1.3 1.834-1.3 3.023 0 0.026 0 0.053 0.001 0.079l-0-0.004c0.131 1.467 0.681 2.784 1.527 3.857l-0.012-0.015c1.604 2.379 3.742 4.282 6.251 5.564l0.094 0.043c0.548 0.248 1.25 0.513 1.968 0.74l0.149 0.041c0.442 0.14 0.951 0.221 1.479 0.221 0.303 0 0.601-0.027 0.889-0.078l-0.031 0.004c1.069-0.223 1.956-0.868 2.497-1.749l0.009-0.017c0.165-0.366 0.261-0.793 0.261-1.242 0-0.185-0.016-0.366-0.047-0.542l0.003 0.019c-0.092-0.155-0.34-0.247-0.712-0.434z"></path> </g></svg>
-          <p>COMECE AGORA</p>
-        </a>
-    </section>
-
-  </main>
+  <script>
+    // JS vazio de propósito: estrutura pronta para futuras melhorias, mantendo a página leve.
+  </script>
 </body>
-</html>
+  </html>
