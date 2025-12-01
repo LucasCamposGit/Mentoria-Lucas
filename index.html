@@ -144,6 +144,64 @@ li {
   fill: white;
 }
 
+    .newsletter-form {
+  margin-top: 1.8rem;
+  text-align: center;
+}
+
+.newsletter-form label {
+  display: block;
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem;
+  color: #cbd5e1;
+}
+
+.newsletter-fields {
+  display: flex;
+  gap: 0.6rem;
+  justify-content: center;
+}
+
+.newsletter-fields input {
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #334155;
+  background: #0f172a;
+  color: #e2e8f0;
+  width: 60%;
+  max-width: 260px;
+}
+
+.newsletter-fields input::placeholder {
+  color: #64748b;
+}
+
+.newsletter-fields button {
+  padding: 0.75rem 1.2rem;
+  border-radius: 0.5rem;
+  background-color: #3b82f6;
+  color: white;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.newsletter-fields button:hover {
+  background-color: #2563eb;
+}
+
+@media (max-width: 600px) {
+  .newsletter-fields {
+    flex-direction: column;
+  }
+  .newsletter-fields input,
+  .newsletter-fields button {
+    width: 100%;
+  }
+}
+
+
 @media (max-width: 600px) {
   .container {
     padding: 1.5rem 1.1rem;
@@ -376,6 +434,21 @@ li {
         </section>
 
       </section>
+
+      <form class="newsletter-form" method="POST" action="https://script.google.com/macros/s/AKfycbw2Ywa7zmeC6eMew7zNloeXKcor2K7PiX1MuBI1sIi_t_SeamFPA5Hv1NvYK-UgsMU/exec">
+  <label for="email">Entre para receber meus conteúdos sobre aquisição natural:</label>
+  <div class="newsletter-fields">
+    <input
+      type="email"
+      id="email"
+      name="email"
+      placeholder="Digite seu e-mail"
+      required
+    />
+    <button type="submit">Inscrever</button>
+  </div>
+</form>
+
 
     </div>
   </div>
