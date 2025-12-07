@@ -443,21 +443,7 @@
 
       <div class="divider"></div>
 
-      <section>
-        <h2>Eu escolho com quem caminho</h2>
-
-        <p>
-          Até hoje, <span class="highlight">15 pessoas</span> passaram por esse processo — todas selecionadas com cuidado.
-        </p>
-
-        <p>
-          Não por exclusividade, mas porque o Método Natural exige comprometimento real, paciência e visão de longo prazo.
-        </p>
-
-        <p>
-          Eu não vendo ilusão. Meu propósito é simples:
-          <span class="highlight">levar pessoas comuns à fluência real — por um processo natural, leve e definitivo.</span>
-        </p>
+    
 
         <section class="cta-block">
           <a
@@ -489,68 +475,9 @@
           <div class="newsletter-status" id="newsletter-status" aria-live="polite"></div>
         </section>
 
-      </section>
-
     </div>
   </div>
 
-  <script>
-    const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbw2Ywa7zmeC6eMew7zNloeXKcor2K7PiX1MuBI1sIi_t_SeamFPA5Hv1NvYK-UgsMU/exec';
-
-    document.addEventListener('DOMContentLoaded', function () {
-      const form = document.getElementById('newsletter-form');
-      const emailInput = document.getElementById('email');
-      const statusEl = document.getElementById('newsletter-status');
-
-      if (!form) return;
-
-      form.addEventListener('submit', function (event) {
-        event.preventDefault(); // impede reload/redirecionamento
-
-        const email = emailInput.value.trim();
-        if (!email) return;
-
-        // estado "enviando"
-        form.classList.add('is-sending');
-        statusEl.innerHTML = '';
-
-        const body = new URLSearchParams({ email }).toString();
-
-        fetch(WEB_APP_URL, {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
-          },
-          body
-        })
-          .then(() => {
-            form.classList.remove('is-sending');
-            emailInput.value = '';
-
-            statusEl.innerHTML = `
-              <div class="status-message success">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"></path>
-                </svg>
-                <span>Pronto! Seu e-mail foi cadastrado.</span>
-              </div>
-            `;
-          })
-          .catch(() => {
-            form.classList.remove('is-sending');
-
-            statusEl.innerHTML = `
-              <div class="status-message error">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M12 2 2 22h20L12 2zm0 14v-4h0v4zm0 4v-2h0v2z"></path>
-                </svg>
-                <span>Ops, algo deu errado. Tente novamente.</span>
-              </div>
-            `;
-          });
-      });
-    });
-  </script>
+  
 </body>
 </html>
