@@ -1,314 +1,59 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <title>Mentoria de Inglês – Método Natural</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <style>
-  :root {
-    font-size: 16px;
-  }
-
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-
-  body {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-      sans-serif;
-    line-height: 1.6;
-    color: #e5e7eb;
-    background-color: #0f172a; /* fundo escuro */
-  }
-
-  .page {
-    min-height: 100vh;
-    padding: 1.5rem 1rem 3rem;
-  }
-
-  .container {
-    max-width: 800px;
-    margin: 0 auto;
-    background: #1e293b; /* caixa escura */
-    padding: 2rem 1.5rem;
-    border-radius: 0.75rem;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* sombra mais pesada */
-  }
-
-  header {
-    margin-bottom: 2rem;
-  }
-
-  header h1 {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-    font-weight: 700;
-    letter-spacing: -0.03em;
-    color: #f8fafc;
-  }
-
-  header p {
-    color: #9ca3af;
-    font-size: 0.95rem;
-  }
-
-  h2 {
-    font-size: 1.3rem;
-    margin: 2rem 0 0.75rem;
-    font-weight: 700;
-    color: #f1f5f9;
-  }
-
-  h3 {
-    font-size: 1.05rem;
-    margin: 1.25rem 0 0.5rem;
-    font-weight: 600;
-    color: #e2e8f0;
-  }
-
-  p {
-    margin-bottom: 0.9rem;
-    font-size: 0.98rem;
-    color: #cbd5e1;
-  }
-
-  ul {
-    margin: 0.25rem 0 1rem 1.25rem;
-    padding-left: 0.25rem;
-  }
-
-  li {
-    margin-bottom: 0.35rem;
-    font-size: 0.96rem;
-    color: #cbd5e1;
-  }
-
-  .highlight {
-    font-weight: 600;
-    color: #f1f5f9;
-  }
-
-  .underline {
-    text-decoration: underline;
-  }
-
-  .tagline {
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: #64748b;
-    margin-bottom: 0.5rem;
-  }
-
-  .divider {
-    margin: 1.75rem 0;
-    height: 1px;
-    background: linear-gradient(
-      to right,
-      transparent,
-      #334155,
-      transparent
-    );
-  }
-
-  .cta-block {
-    margin-top: 2rem;
-    padding-top: 1rem;
-    border-top: 1px solid #334155;
-    text-align: center;
-  }
-
-  .cta-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.9rem 1.4rem;
-    background-color: #25d366;
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
-    border-radius: 0.5rem;
-    font-size: 1rem;
-    transition: background-color 0.2s ease;
-  }
-
-  .cta-btn:hover {
-    background-color: #1ebe5d;
-  }
-
-  .cta-btn svg {
-    width: 22px;
-    height: 22px;
-    fill: white;
-  }
-
-  /* Newsletter */
-
-  .newsletter-form {
-    margin-top: 1.8rem;
-    text-align: center;
-  }
-
-  .newsletter-form label {
-    display: block;
-    margin-bottom: 0.75rem;
-    font-size: 0.95rem;
-    color: #cbd5e1;
-  }
-
-  .newsletter-fields {
-    display: flex;
-    gap: 0.6rem;
-    justify-content: center;
-  }
-
-  .newsletter-fields input {
-    padding: 0.75rem 1rem;
-    border-radius: 0.5rem;
-    border: 1px solid #334155;
-    background: #0f172a;
-    color: #e2e8f0;
-    width: 60%;
-    max-width: 260px;
-  }
-
-  .newsletter-fields input::placeholder {
-    color: #64748b;
-  }
-
-  .newsletter-fields button {
-    padding: 0.75rem 1.2rem;
-    border-radius: 0.5rem;
-    background-color: #3b82f6;
-    color: white;
-    font-weight: 600;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.2s ease, opacity 0.2s ease;
-  }
-
-  .newsletter-fields button:hover {
-    background-color: #2563eb;
-  }
-
-  .newsletter-form.is-sending .newsletter-fields button {
-    opacity: 0.7;
-    pointer-events: none;
-  }
-
-  .newsletter-status {
-    margin-top: 0.8rem;
-    min-height: 1.5rem;
-  }
-
-  .status-message {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    font-size: 0.9rem;
-  }
-
-  .status-message svg {
-    width: 18px;
-    height: 18px;
-  }
-
-  .status-message.success span {
-    color: #22c55e;
-  }
-
-  .status-message.success svg {
-    fill: #22c55e;
-  }
-
-  .status-message.error span {
-    color: #f97373;
-  }
-
-  .status-message.error svg {
-    fill: #f97373;
-  }
-
-  @media (max-width: 600px) {
-    .newsletter-fields {
-      flex-direction: column;
-    }
-    .newsletter-fields input,
-    .newsletter-fields button {
-      width: 100%;
-    }
-  }
-
-  @media (max-width: 600px) {
-    .container {
-      padding: 1.5rem 1.1rem;
-    }
-
-    header h1 {
-      font-size: 1.6rem;
-    }
-
-    h2 {
-      font-size: 1.15rem;
-    }
-
-    body {
-      background-color: #0f172a;
-    }
-  }
-  </style>
-
-  <script defer src="/_vercel/insights/script.js"></script>
-  <script>
-    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-  </script>
-</head>
 <body>
   <div class="page">
     <div class="container">
       <header>
         <div class="tagline">Guia 1</div>
         <h1>Mentoria de Inglês com o <span class="underline">Método Natural</span></h1>
-        <p>Carta de boas-vindas para quem quer fluência real — do jeito que o cérebro aprende de verdade.</p>
+        <p>
+          Uma carta de boas-vindas para quem quer fluência real — construída do mesmo jeito
+          que o cérebro humano aprende uma língua.
+        </p>
       </header>
 
       <section>
-        <h2>Antes de começar, precisamos de um acordo</h2>
-
-        <p><span class="highlight">Primeiro:</span> tudo o que você precisa saber sobre mim está aqui.</p>
+        <h2>Antes de começar, um alinhamento importante</h2>
 
         <p>
-          <span class="highlight">Segundo:</span> meu método não é sprint, atalho ou truque. Não é gramática, nem promessa rápida. 
-          Ele é baseado no que a ciência mostra há décadas: 
-          <span class="highlight">o cérebro adquire uma língua através de exposição compreensível, constante e inserida na rotina</span>,
-          não através de memorização ou fórmulas.
+          <span class="highlight">Primeiro:</span> tudo o que você precisa saber sobre como eu trabalho
+          está descrito aqui, com total transparência.
         </p>
 
         <p>
-          Se você busca milagre… <span class="highlight">pode fechar essa aba.</span>
+          <span class="highlight">Segundo:</span> esta mentoria não foi criada para acelerar resultados,
+          prometer atalhos ou vender ilusões.
+          Ela é baseada no que a ciência da aquisição de linguagem mostra há décadas:
+          <span class="highlight">
+            o cérebro não aprende idiomas por memorização, mas por exposição compreensível,
+            repetida e contextualizada
+          </span>.
         </p>
 
         <p>
-          Esta é a minha carta de boas-vindas — lapidada inúmeras vezes desde que comecei a ensinar o que realmente funciona.
-          E sim, você talvez encontre versões parecidas por aí. Isso acontece quando um método fundamentado em pesquisa 
-          começa a incomodar quem vive de promessas fáceis.
+          Se você procura algo milagroso ou imediato, este provavelmente não é o lugar certo.
         </p>
 
         <p>
-          Se ainda não aconteceu com você, respire. Aqui você vai aprender inglês de um jeito tão orgânico e previsível 
-          que se torna <span class="highlight">impossível voltar ao ciclo de decorar → revisar → esquecer</span>.
+          Este texto é uma carta de boas-vindas — refinada ao longo do tempo conforme eu observava
+          o que realmente levava pessoas à fluência, e o que apenas as mantinha ocupadas.
         </p>
 
         <p>
-          O que você vai ver aqui não é método rápido. É um processo real — <span class="highlight">de 1 a 2 anos</span> — modelado 
-          sobre como o cérebro cria linguagem internamente: 
-          <span class="highlight">input compreensível repetido, contextualizado e diário.</span>
+          Aqui, você vai aprender inglês de um jeito tão orgânico e previsível que,
+          depois de um tempo,
+          <span class="highlight">o antigo ciclo de estudar → revisar → esquecer simplesmente deixa de fazer sentido</span>.
         </p>
 
         <p>
-          Foi assim que eu conquistei <span class="highlight">fluência completa</span> — e é isso que ensino a cada pessoa que entra na mentoria.
+          Não estamos falando de um método rápido.
+          Estamos falando de um processo real — geralmente entre
+          <span class="highlight">1 e 2 anos</span> —
+          modelado sobre como o cérebro constrói linguagem internamente:
+          <span class="highlight">input compreensível, diário, repetido e significativo</span>.
+        </p>
+
+        <p>
+          Foi assim que eu alcancei fluência completa.
+          E é exatamente esse processo que oriento na mentoria.
         </p>
       </section>
 
@@ -318,27 +63,39 @@
         <h2>O Método Natural</h2>
 
         <p>
-          O Método Natural não exige que você “estude inglês”. Ele exige que você 
-          <span class="highlight">viva inglês</span> — do seu jeito, com seus interesses, nos seus horários naturais.
+          O Método Natural não exige que você “estude inglês”.
+          Ele exige algo muito mais simples e eficaz:
+          <span class="highlight">que o inglês faça parte da sua vida real</span>.
         </p>
 
         <p>
-          Você continua vendo futebol, dorama, anime, música, vídeos, podcasts… 
-          mas agora na versão que <span class="highlight">seu cérebro consegue entender e internalizar</span>. 
-          Nada forçado, nada artificial, nada que exija horas extras.
+          Você continua consumindo o que já consome —
+          futebol, dorama, anime, música, vídeos, podcasts —
+          mas agora em versões que
+          <span class="highlight">o seu cérebro consegue compreender e absorver</span>.
         </p>
 
         <p>
-          A fala não é pressionada. Ela <span class="highlight">emerge inevitavelmente</span> depois de meses de compreensão acumulada.
+          Nada é forçado.
+          Nada é artificial.
+          Não há carga extra de horas ou tarefas desconectadas da sua rotina.
         </p>
 
         <p>
-          Quando o cérebro está pronto, você simplesmente percebe: frases surgem, respostas vêm, diálogos fluem.  
-          Sem esforço consciente.
+          A fala não é treinada nem pressionada.
+          Ela <span class="highlight">emerge naturalmente</span>
+          depois de meses de compreensão acumulada.
         </p>
 
         <p>
-          Para qualquer pessoa consistente: <span class="highlight">primeiro você entende muito; depois você fala bem.</span>
+          Quando isso acontece, você percebe algo curioso:
+          frases surgem sozinhas, respostas vêm sem tradução,
+          diálogos começam a fluir.
+        </p>
+
+        <p>
+          Para qualquer pessoa consistente, a ordem é sempre a mesma:
+          <span class="highlight">primeiro entender muito — depois falar bem</span>.
         </p>
       </section>
 
@@ -349,23 +106,23 @@
 
         <h3>NÃO é para quem:</h3>
         <ul>
-          <li>quer resultado rápido;</li>
-          <li>quer regras, gramática e memorização;</li>
-          <li>busca fórmula mágica;</li>
-          <li>não pretende colocar inglês no cotidiano;</li>
-          <li>acredita em fluência em 3 meses.</li>
+          <li>procura resultados rápidos;</li>
+          <li>prefere regras, gramática e memorização;</li>
+          <li>busca fórmulas mágicas;</li>
+          <li>não pretende inserir inglês no dia a dia;</li>
+          <li>acredita em fluência em poucos meses.</li>
         </ul>
 
         <h3>É para quem:</h3>
         <ul>
-          <li>quer aprender inglês de forma sólida em 1–2 anos;</li>
-          <li>entende que fluência é construída, não acelerada;</li>
-          <li>aceita um processo natural, constante e previsível;</li>
+          <li>quer construir fluência sólida ao longo de 1–2 anos;</li>
+          <li>entende que fluência é consequência de processo;</li>
+          <li>aceita um caminho natural, previsível e contínuo;</li>
           <li>está disposto a transformar parte do lazer em aquisição;</li>
-          <li>quer leveza, mas entende o peso da consistência.</li>
+          <li>valoriza leveza, mas respeita a consistência.</li>
         </ul>
 
-        <p>Se isso soa como você, continue.</p>
+        <p>Se isso descreve você, faz sentido continuar.</p>
       </section>
 
       <div class="divider"></div>
@@ -374,34 +131,44 @@
         <h2>Cenário imaginado</h2>
 
         <p>
-          Você acorda, pega o celular e dá play em algo que já veria de qualquer forma — só que agora em inglês,
-          <span class="highlight">no nível certo e do jeito certo</span>.
+          Você acorda, pega o celular e dá play em algo que já veria de qualquer forma —
+          só que agora em inglês,
+          <span class="highlight">no nível certo e com progressão consciente</span>.
         </p>
 
         <p>
-          Com o tempo, padrões começam a se repetir. Frases ganham nitidez. 
-          Você entende diálogos inteiros sem traduzir.
+          Com o tempo, padrões se repetem.
+          Frases começam a soar familiares.
+          Você entende diálogos inteiros sem precisar traduzir.
         </p>
 
         <p>
-          A música vira mensagem. As séries fluem. O ouvido destrava.
+          A música vira mensagem.
+          As séries fluem.
+          O ouvido destrava.
         </p>
 
         <p>
-          E o mais importante: <span class="highlight">você não está estudando. Você está vivendo.</span>
+          E o ponto central:
+          <span class="highlight">você não está estudando — você está vivendo o idioma</span>.
         </p>
 
         <p>
-          Agora imagine isso por meses. Por um ano. Por dois.
+          Agora imagine esse processo acontecendo por meses.
+          Por um ano.
+          Por dois.
         </p>
 
         <p>
-          A fluência que surge desse processo não vai embora — porque ela não é decorada: 
-          <span class="highlight">ela é adquirida.</span>
+          A fluência construída assim não se perde,
+          porque não foi decorada —
+          <span class="highlight">ela foi adquirida</span>.
         </p>
 
         <p>
-          Sem cronograma sufocante. Sem exercícios vazios. Apenas clareza, direção e constância.
+          Sem cronogramas sufocantes.
+          Sem exercícios vazios.
+          Apenas clareza, direção e constância.
         </p>
       </section>
 
@@ -411,55 +178,56 @@
         <h2>Como funciona a mentoria</h2>
 
         <p>
-          A mentoria é <span class="highlight">1:1</span>. Nós conversamos, eu entendo sua rotina, seus gostos, seus interesses e responsabilidades.
+          A mentoria é <span class="highlight">individual (1:1)</span>.
+          Nós conversamos para entender sua rotina, seus interesses,
+          seus horários e suas limitações reais.
         </p>
 
         <p>
-          A partir disso, construo com você <span class="highlight">um plano de aquisição moldado para a sua vida real</span>. 
-          Não tiro nada de você — apenas reorganizo o que já existe.
+          A partir disso, eu construo com você
+          <span class="highlight">um plano de aquisição totalmente integrado à sua vida</span>.
+          Nada é retirado — apenas reorganizado.
         </p>
 
-        <p>Eu te mostro exatamente:</p>
+        <p>Durante o processo, você tem clareza total sobre:</p>
 
         <ul>
           <li>o que consumir;</li>
           <li>como consumir;</li>
-          <li>quando mudar de nível;</li>
           <li>quando repetir;</li>
           <li>quando avançar;</li>
-          <li>como medir sua evolução sem ansiedade.</li>
+          <li>como perceber evolução sem ansiedade.</li>
         </ul>
 
         <p>
-          Quando necessário, produzo input compreensível personalizado.  
-          Mas o foco é outro: <span class="highlight">direção contínua</span>, ajustes e clareza absoluta sobre o caminho até a fluência.
+          Quando necessário, eu produzo input compreensível personalizado.
+          Mas o diferencial não é o material —
+          é a <span class="highlight">direção contínua</span> e os ajustes ao longo do caminho.
         </p>
 
         <p>
-          Não é curso gravado. Não é pacote pronto.  
-          É desenvolvimento individual. Poucas vagas — e eu prefiro assim.
+          Não é curso gravado.
+          Não é método genérico.
+          É acompanhamento real.
+        </p>
+
+        <p>
+          As vagas são limitadas — intencionalmente.
         </p>
       </section>
 
-        <section class="cta-block">
-          <a
-            class="cta-btn"
-            href="https://wa.me/5515981298236?text=Ol%C3%A1%2C%20quero%20conhecer%20mais%20sobre%20a%20mentoria"
-            target="_blank"
-          >
-            <svg viewBox="0 0 32 32">
-              <path d="M16.001 2.666c-7.364 0-13.333 5.969-13.333 13.333 0 2.353.615 4.648 1.786 6.676L2.667 29.334l6.855-1.75a13.28 13.28 0 0 0 6.479 1.646h.006c7.364 0 13.333-5.969 13.333-13.333 0-3.563-1.389-6.914-3.913-9.438-2.524-2.524-5.875-3.897-9.426-3.897zm7.91 19.177c-.334.94-1.946 1.79-2.686 1.907-.718.112-1.639.158-2.652-.164-.612-.194-1.397-.453-2.41-.884-4.243-1.842-7.004-6.151-7.217-6.445-.213-.294-1.722-2.295-1.722-4.374 0-2.079 1.094-3.104 1.484-3.525.39-.421.851-.526 1.135-.526.284 0 .568 0 .817.015.263.013.617-.1.967.738.334.812 1.135 2.802 1.235 3.006.1.204.167.445.03.739-.137.294-.206.445-.393.684-.194.243-.41.544-.586.732-.194.206-.395.43-.17.843.226.412 1.003 1.652 2.153 2.675 1.48 1.327 2.722 1.74 3.134 1.934.412.194.651.162.895-.1.244-.263 1.03-1.2 1.303-1.613.273-.412.568-.344.967-.206.399.137 2.522 1.19 2.955 1.406.433.217.718.324.818.506.1.182.1 1.053-.234 1.993z"/>
-            </svg>
-            Falar pelo WhatsApp
-          </a>
-
-       
-   
-        </section>
-
+      <section class="cta-block">
+        <a
+          class="cta-btn"
+          href="https://wa.me/5515981298236?text=Ol%C3%A1%2C%20quero%20conhecer%20mais%20sobre%20a%20mentoria"
+          target="_blank"
+        >
+          <svg viewBox="0 0 32 32">
+            <path d="M16.001 2.666c-7.364 0-13.333 5.969-13.333 13.333 0 2.353.615 4.648 1.786 6.676L2.667 29.334l6.855-1.75a13.28 13.28 0 0 0 6.479 1.646h.006c7.364 0 13.333-5.969 13.333-13.333 0-3.563-1.389-6.914-3.913-9.438-2.524-2.524-5.875-3.897-9.426-3.897zm7.91 19.177c-.334.94-1.946 1.79-2.686 1.907-.718.112-1.639.158-2.652-.164-.612-.194-1.397-.453-2.41-.884-4.243-1.842-7.004-6.151-7.217-6.445-.213-.294-1.722-2.295-1.722-4.374 0-2.079 1.094-3.104 1.484-3.525.39-.421.851-.526 1.135-.526.284 0 .568 0 .817.015.263.013.617-.1.967.738.334.812 1.135 2.802 1.235 3.006.1.204.167.445.03.739-.137.294-.206.445-.393.684-.194.243-.41.544-.586.732-.194.206-.395.43-.17.843.226.412 1.003 1.652 2.153 2.675 1.48 1.327 2.722 1.74 3.134 1.934.412.194.651.162.895-.1.244-.263 1.03-1.2 1.303-1.613.273-.412.568-.344.967-.206.399.137 2.522 1.19 2.955 1.406.433.217.718.324.818.506.1.182.1 1.053-.234 1.993z"/>
+          </svg>
+          Falar pelo WhatsApp
+        </a>
+      </section>
     </div>
   </div>
-
-  
 </body>
-</html>
