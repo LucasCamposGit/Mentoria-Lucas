@@ -1,824 +1,474 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Mentoria de Inglês por Aquisição Natural</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fluência em Inglês Sem Tradução Mental</title>
     <style>
-      :root {
-        font-size: 16px;
-        --bg: #0b1224;
-        --surface: #111b34;
-        --surface-2: #0f172a;
-        --text: #e5e7eb;
-        --muted: #a9b2c3;
-        --soft: #cbd5e1;
-        --line: #24314f;
-        --line-2: #334155;
-        --brand: #60a5fa;
-        --brand-2: #3b82f6;
-        --wa: #25d366;
-        --wa-hover: #1ebe5d;
-        --ok: #22c55e;
-        --bad: #f97373;
-        --shadow: 0 14px 40px rgba(0, 0, 0, 0.55);
-        --radius: 16px;
-      }
-
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-
-      html,
-      body {
-        height: 100%;
-      }
-
-     body {
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        line-height: 1.6;
-        color: var(--text);
-      
-
-        background-color: #111827;
-      }
-
-
-      a {
-        color: inherit;
-      }
-
-      .page {
-        min-height: 100vh;
-        padding: 1.75rem 1rem 3.25rem;
-      }
-
-      .container {
-        max-width: 860px;
-        margin: 0 auto;
-        background: linear-gradient(180deg, rgba(17, 27, 52, 0.98), rgba(15, 23, 42, 0.98));
-        border: 1px solid rgba(148, 163, 184, 0.12);
-        padding: 2.25rem 1.75rem;
-        border-radius: var(--radius);
-        box-shadow: var(--shadow);
-        position: relative;
-        overflow: hidden;
-      }
-
-      .container:before {
-        content: "";
-        position: absolute;
-        inset: -2px;
-        background: radial-gradient(900px 500px at 20% -10%, rgba(96, 165, 250, 0.12), transparent 55%),
-          radial-gradient(700px 450px at 85% 0%, rgba(37, 211, 102, 0.09), transparent 55%);
-        pointer-events: none;
-        z-index: 0;
-      }
-
-      .container > * {
-        position: relative;
-        z-index: 1;
-      }
-
-      header {
-        margin-bottom: 1.75rem;
-      }
-
-      .tagline {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        font-size: 0.82rem;
-        text-transform: uppercase;
-        letter-spacing: 0.14em;
-        color: #92a2bf;
-        margin-bottom: 0.75rem;
-      }
-
-      .tagline .pill {
-        display: inline-flex;
-        align-items: center;
-        padding: 0.25rem 0.55rem;
-        border: 1px solid rgba(148, 163, 184, 0.18);
-        border-radius: 999px;
-        background: rgba(15, 23, 42, 0.6);
-      }
-
-      header h1 {
-        font-size: 2.05rem;
-        margin-bottom: 0.65rem;
-        font-weight: 800;
-        letter-spacing: -0.04em;
-        color: #f8fafc;
-      }
-
-      header p {
-        color: var(--muted);
-        font-size: 1rem;
-        max-width: 62ch;
-      }
-
-      .lead {
-        margin-top: 1rem;
-        padding: 1rem 1rem 1.05rem;
-        border-radius: 14px;
-        background: rgba(2, 6, 23, 0.25);
-        border: 1px solid rgba(148, 163, 184, 0.12);
-      }
-
-      .lead p {
-        margin: 0;
-        color: var(--soft);
-      }
-
-      h2 {
-        font-size: 1.34rem;
-        margin: 2.05rem 0 0.8rem;
-        font-weight: 800;
-        color: #f1f5f9;
-        letter-spacing: -0.02em;
-      }
-
-      h3 {
-        font-size: 1.06rem;
-        margin: 1.2rem 0 0.55rem;
-        font-weight: 700;
-        color: #e2e8f0;
-      }
-
-      p {
-        margin-bottom: 0.95rem;
-        font-size: 1rem;
-        color: var(--soft);
-      }
-
-      ul {
-        margin: 0.35rem 0 1.1rem 1.25rem;
-        padding-left: 0.25rem;
-      }
-
-      li {
-        margin-bottom: 0.45rem;
-        font-size: 0.98rem;
-        color: var(--soft);
-      }
-
-      .highlight {
-        font-weight: 700;
-        color: #f8fafc;
-      }
-
-      .underline {
-        text-decoration: underline;
-        text-decoration-thickness: 2px;
-        text-underline-offset: 3px;
-      }
-
-      .divider {
-        margin: 1.9rem 0;
-        height: 1px;
-        background: linear-gradient(to right, transparent, rgba(148, 163, 184, 0.22), transparent);
-      }
-
-      .callout {
-        margin-top: 1.15rem;
-        padding: 1rem 1.05rem;
-        border-radius: 14px;
-        background: rgba(59, 130, 246, 0.10);
-        border: 1px solid rgba(59, 130, 246, 0.20);
-      }
-
-      .callout strong {
-        color: #f8fafc;
-      }
-
-      .grid-2 {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 1rem;
-        margin-top: 0.75rem;
-      }
-
-      .card {
-        border-radius: 14px;
-        background: rgba(2, 6, 23, 0.22);
-        border: 1px solid rgba(148, 163, 184, 0.12);
-        padding: 1rem 1.05rem;
-      }
-
-      .card .card-title {
-        display: flex;
-        align-items: center;
-        gap: 0.55rem;
-        font-weight: 800;
-        color: #f1f5f9;
-        margin-bottom: 0.55rem;
-        letter-spacing: -0.01em;
-      }
-
-      .card .card-title svg {
-        width: 18px;
-        height: 18px;
-        opacity: 0.95;
-      }
-
-      .cta-block {
-        margin-top: 2.25rem;
-        padding-top: 1.3rem;
-        border-top: 1px solid rgba(148, 163, 184, 0.18);
-        text-align: center;
-      }
-
-      .cta-title {
-        font-size: 1.05rem;
-        font-weight: 800;
-        color: #f1f5f9;
-        margin-bottom: 0.35rem;
-      }
-
-      .cta-sub {
-        color: var(--muted);
-        font-size: 0.95rem;
-        margin-bottom: 1.05rem;
-      }
-
-      .cta-btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.55rem;
-        padding: 0.92rem 1.45rem;
-        background-color: var(--wa);
-        color: white;
-        text-decoration: none;
-        font-weight: 800;
-        border-radius: 0.75rem;
-        font-size: 1rem;
-        transition: transform 0.08s ease, background-color 0.2s ease, box-shadow 0.2s ease;
-        box-shadow: 0 10px 22px rgba(37, 211, 102, 0.18);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-      }
-
-      .cta-btn:hover {
-        background-color: var(--wa-hover);
-        transform: translateY(-1px);
-      }
-
-      .cta-btn:active {
-        transform: translateY(0px);
-      }
-
-      .cta-btn svg {
-        width: 22px;
-        height: 22px;
-        fill: white;
-      }
-
-      .fineprint {
-        margin-top: 0.8rem;
-        font-size: 0.9rem;
-        color: #8ea0bb;
-      }
-
-      /* Newsletter */
-      .newsletter-form {
-        margin-top: 1.6rem;
-        text-align: center;
-      }
-
-      .newsletter-form label {
-        display: block;
-        margin-bottom: 0.75rem;
-        font-size: 0.95rem;
-        color: var(--soft);
-      }
-
-      .newsletter-fields {
-        display: flex;
-        gap: 0.6rem;
-        justify-content: center;
-        flex-wrap: wrap;
-      }
-
-      .newsletter-fields input {
-        padding: 0.78rem 1rem;
-        border-radius: 0.75rem;
-        border: 1px solid rgba(148, 163, 184, 0.18);
-        background: rgba(15, 23, 42, 0.85);
-        color: #e2e8f0;
-        width: min(320px, 100%);
-        outline: none;
-      }
-
-      .newsletter-fields input:focus {
-        border-color: rgba(96, 165, 250, 0.65);
-        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.18);
-      }
-
-      .newsletter-fields input::placeholder {
-        color: #7e91ad;
-      }
-
-      .newsletter-fields button {
-        padding: 0.78rem 1.1rem;
-        border-radius: 0.75rem;
-        background-color: var(--brand-2);
-        color: white;
-        font-weight: 800;
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        cursor: pointer;
-        transition: transform 0.08s ease, background-color 0.2s ease, opacity 0.2s ease;
-      }
-
-      .newsletter-fields button:hover {
-        background-color: #2563eb;
-        transform: translateY(-1px);
-      }
-
-      .newsletter-fields button:active {
-        transform: translateY(0px);
-      }
-
-      .newsletter-form.is-sending .newsletter-fields button {
-        opacity: 0.7;
-        pointer-events: none;
-      }
-
-      .newsletter-status {
-        margin-top: 0.85rem;
-        min-height: 1.5rem;
-      }
-
-      .status-message {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.45rem;
-        font-size: 0.92rem;
-      }
-
-      .status-message svg {
-        width: 18px;
-        height: 18px;
-      }
-
-      .status-message.success span {
-        color: var(--ok);
-      }
-
-      .status-message.success svg {
-        fill: var(--ok);
-      }
-
-      .status-message.error span {
-        color: var(--bad);
-      }
-
-      .status-message.error svg {
-        fill: var(--bad);
-      }
-
-      footer {
-        margin-top: 1.75rem;
-        padding-top: 1.25rem;
-        border-top: 1px solid rgba(148, 163, 184, 0.14);
-        text-align: center;
-        color: #86a0bf;
-        font-size: 0.9rem;
-      }
-
-      @media (max-width: 700px) {
-        .grid-2 {
-          grid-template-columns: 1fr;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-      }
 
-      @media (max-width: 600px) {
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.7;
+            color: #e2e8f0;
+            background: #0f172a;
+        }
+
         .container {
-          padding: 1.55rem 1.15rem;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
         }
 
-        header h1 {
-          font-size: 1.62rem;
+        header {
+            background: linear-gradient(135deg, #4c51bf 0%, #5b21b6 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        section {
+            background: #1e293b;
+            margin: 40px auto;
+            padding: 60px 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
         }
 
         h2 {
-          font-size: 1.18rem;
+            font-size: 2em;
+            margin-bottom: 30px;
+            color: #f1f5f9;
         }
 
-        header p {
-          font-size: 0.98rem;
+        h3 {
+            font-size: 1.5em;
+            margin: 40px 0 20px;
+            color: #e2e8f0;
         }
 
-        .page {
-          padding-top: 1.2rem;
+        p {
+            margin-bottom: 20px;
+            font-size: 1.1em;
         }
-      }
+
+        .highlight {
+            background: #422006;
+            padding: 30px;
+            border-left: 4px solid #f59e0b;
+            margin: 30px 0;
+            border-radius: 4px;
+        }
+
+        .two-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin: 30px 0;
+        }
+
+        .column h4 {
+            color: #e74c3c;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .column.positive h4 {
+            color: #27ae60;
+        }
+
+        .column ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .column li {
+            padding: 8px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .column li:before {
+            content: "✗";
+            position: absolute;
+            left: 0;
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        .column.positive li:before {
+            content: "✓";
+            color: #27ae60;
+        }
+
+        .promise-box {
+            background: linear-gradient(135deg, #4c51bf 0%, #5b21b6 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 12px;
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .promise-box h3 {
+            color: white;
+            margin-top: 0;
+        }
+
+        .benefit-item {
+            background: #334155;
+            padding: 30px;
+            margin: 20px 0;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .benefit-item h4 {
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+
+        .cta-section {
+            background: #1a202c;
+            color: white;
+            text-align: center;
+            padding: 80px 40px;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: #25D366;
+            color: white;
+            padding: 20px 50px;
+            font-size: 1.3em;
+            text-decoration: none;
+            border-radius: 50px;
+            margin-top: 30px;
+            transition: all 0.3s;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+        }
+
+        .cta-button:hover {
+            background: #1fb855;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+        }
+
+        .whatsapp-icon {
+            width: 28px;
+            height: 28px;
+        }
+
+        .emphasis {
+            font-size: 1.2em;
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .subtitle {
+                font-size: 1.1em;
+            }
+
+            section {
+                padding: 40px 25px;
+            }
+
+            .two-columns {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            h2 {
+                font-size: 1.6em;
+            }
+        }
     </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Fluência em Inglês Sem Tradução Mental</h1>
+            <p class="subtitle">Fale com clareza, entenda em tempo real e pare de travar — do jeito certo</p>
+        </div>
+    </header>
 
-    <script defer src="/_vercel/insights/script.js"></script>
-    <script>
-      window.va =
-        window.va ||
-        function () {
-          (window.vaq = window.vaq || []).push(arguments);
-        };
-    </script>
-  </head>
-
-  <body>
-    <div class="page">
-      <div class="container">
-        <header>
-          <div class="tagline">
-            <span class="pill">Mentoria 1:1</span>
-            <span>Por Aquisição Natural</span>
-          </div>
-
-          <h1>
-            Mentoria de Inglês por <span class="underline">Aquisição Natural</span>
-          </h1>
-
-          <p>
-            Fluência real, construída do mesmo jeito que o cérebro humano aprende
-            qualquer língua.
-          </p>
-
-          <div class="lead">
-            <p>
-              Se você já tentou estudar inglês e sentiu que algo sempre travava —
-              <span class="highlight">não falta esforço.</span>
-              Falta alinhamento com o cérebro.
+    <div class="container">
+        <section>
+            <p style="font-size: 1.2em; text-align: center; color: #4a5568;">
+                Se você já estudou inglês por anos, sabe regras, entende quando lê…<br>
+                mas trava para ouvir ou falar, <strong>o problema não é você.</strong>
             </p>
-          </div>
-        </header>
-
-        <section>
-          <h2>Antes de continuar, uma verdade simples</h2>
-          <p>
-            O cérebro humano não aprende idiomas decorando regras. Ele adquire
-            linguagem através de <span class="highlight">exposição compreensível, repetida e contextualizada.</span>
-          </p>
-          <p>
-            <span class="highlight">Isso não é opinião.</span> É o que a ciência linguística demonstra há décadas.
-          </p>
-          <p>
-            Mesmo assim, a maioria das pessoas ainda tenta aprender inglês do jeito
-            mais difícil possível.
-          </p>
-
-          <div class="callout">
-            <p>
-              <strong>Resumo do que muda:</strong> você para de lutar contra o próprio cérebro e
-              começa a construir fluência por acúmulo de compreensão.
+            <p style="text-align: center; font-size: 1.3em; margin-top: 30px;">
+                <strong>É o caminho que te fizeram seguir.</strong>
             </p>
-          </div>
+            
+            <div class="highlight">
+                <p style="margin: 0; font-size: 1.2em;"><strong>Você não falha no inglês.</strong><br>
+                Você foi treinado de um jeito que entra em conflito com o cérebro.</p>
+            </div>
         </section>
 
-        <div class="divider"></div>
-
         <section>
-          <h2>O erro silencioso que quase ninguém percebe</h2>
-          <p>
-            A maior parte dos métodos força o aluno a produzir antes de estar pronto:
-            falar antes de entender, escrever antes de ouvir, memorizar antes de reconhecer padrões.
-          </p>
-
-          <p>O resultado é previsível:</p>
-          <ul>
-            <li>ansiedade</li>
-            <li>bloqueio na fala</li>
-            <li>sensação constante de “eu sei, mas não sai”</li>
-            <li>ciclos eternos de estudar → revisar → esquecer</li>
-          </ul>
-
-          <p>
-            Não porque você é incapaz. Mas porque o processo está invertido.
-          </p>
-        </section>
-
-        <div class="divider"></div>
-
-        <section>
-          <h2>O que muda quando a ordem é correta</h2>
-          <p>
-            Quando o cérebro recebe <span class="highlight">input compreensível</span>, diário e progressivo:
-          </p>
-
-          <ul>
-            <li>primeiro, o entendimento cresce</li>
-            <li>depois, os padrões se fixam</li>
-            <li>e só então a fala emerge — naturalmente</li>
-          </ul>
-
-          <p>Sem pressão. Sem tradução mental. Sem esforço consciente.</p>
-          <p>
-            Você não “decide” falar melhor. Você percebe que já está falando.
-          </p>
-        </section>
-
-        <div class="divider"></div>
-
-        <section>
-          <h2>O Método Natural (Krashen + Paul Nation)</h2>
-          <p>
-            Na mentoria, eu uno dois pilares científicos da aquisição de línguas:
-          </p>
-
-          <div class="grid-2">
-            <div class="card">
-              <div class="card-title">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path fill="currentColor" d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm1 15h-2v-2h2Zm1.2-7.9-.9 4.4a1 1 0 0 1-1 .8h-.6a1 1 0 0 1-1-1.2l.9-4.4A1 1 0 0 1 12.6 8h.6a1 1 0 0 1 1 .2 1 1 0 0 1 .3.9Z"/>
-                </svg>
-                <span>1) Método Natural (Stephen Krashen)</span>
-              </div>
-              <p>
-                A linguagem é adquirida por <span class="highlight">exposição compreensível</span>, não por estudo ativo.
-              </p>
+            <h2>O que você realmente quer (seja honesto)</h2>
+            
+            <div class="two-columns">
+                <div class="column">
+                    <h4>Você não quer:</h4>
+                    <ul>
+                        <li>estudar inglês para sempre</li>
+                        <li>decorar regras</li>
+                        <li>repetir frases artificiais</li>
+                        <li>"praticar conversação" e continuar travando</li>
+                    </ul>
+                </div>
+                
+                <div class="column positive">
+                    <h4>Você quer:</h4>
+                    <ul>
+                        <li>entender inglês sem traduzir</li>
+                        <li>acompanhar séries, vídeos e reuniões em tempo real</li>
+                        <li>falar sem travar, sem pensar em regras</li>
+                        <li>ter um sotaque claro e compreensível</li>
+                        <li>se sentir confortável usando inglês na vida real</li>
+                        <li>morar fora, viajar ou trabalhar em inglês sem sofrer</li>
+                    </ul>
+                </div>
             </div>
 
-            <div class="card">
-              <div class="card-title">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path fill="currentColor" d="M4 4h16v2H4zm0 4h10v2H4zm0 4h16v2H4zm0 4h10v2H4z"/>
-                </svg>
-                <span>2) Aquisição de Vocabulário (Paul Nation)</span>
-              </div>
-              <p>
-                Vocabulário é construído por <span class="highlight">repetição significativa</span>, frequência e contexto — não por listas.
-              </p>
+            <p style="text-align: center; font-size: 1.2em; margin-top: 40px;">
+                <strong>É exatamente isso que esta mentoria constrói.</strong>
+            </p>
+        </section>
+
+        <section class="promise-box">
+            <h3>A promessa (clara, honesta e condicional)</h3>
+            <p style="font-size: 1.1em;">Se você:</p>
+            <ul style="text-align: left; max-width: 600px; margin: 20px auto; list-style: none;">
+                <li style="padding: 8px 0;">✓ seguir o plano de exposição diária</li>
+                <li style="padding: 8px 0;">✓ consumir o conteúdo certo, no nível certo</li>
+                <li style="padding: 8px 0;">✓ aplicar o método de vocabulário e treino de fala</li>
+            </ul>
+            <p class="emphasis" style="font-size: 1.3em; margin-top: 30px; color: #ffd700;">
+                👉 você desenvolve fluência funcional real em 12 a 18 meses, com:
+            </p>
+            <ul style="text-align: left; max-width: 600px; margin: 20px auto; list-style: none;">
+                <li style="padding: 8px 0;">✓ compreensão automática (sem tradução)</li>
+                <li style="padding: 8px 0;">✓ fala que surge com controle e confiança</li>
+                <li style="padding: 8px 0;">✓ pronúncia progressivamente mais natural</li>
+                <li style="padding: 8px 0;">✓ fluência que não desaparece, porque não foi decorada</li>
+            </ul>
+            <p style="margin-top: 30px; font-size: 1.1em;">
+                Sem promessas milagrosas.<br>
+                Sem ansiedade.<br>
+                Sem lutar contra o próprio cérebro.
+            </p>
+        </section>
+
+        <section>
+            <h2>Por que você trava hoje (mesmo "sabendo" inglês)</h2>
+            <p>A maioria dos métodos força você a:</p>
+            <ul style="margin: 20px 0; padding-left: 30px;">
+                <li>falar antes de entender</li>
+                <li>memorizar palavras fora de contexto</li>
+                <li>produzir antes do cérebro estar pronto</li>
+            </ul>
+            
+            <p style="margin-top: 30px;"><strong>O resultado é previsível:</strong></p>
+            <p>ansiedade • bloqueio • "eu sei, mas não sai" • dependência eterna de legenda • sensação de estagnação</p>
+            
+            <div class="highlight">
+                <p><strong>Não porque você é incapaz.</strong><br>
+                Mas porque a ordem foi invertida.</p>
             </div>
-          </div>
-
-          <p style="margin-top: 1rem;">
-            O método não exige que você estude inglês. Ele exige algo muito mais inteligente:
-          </p>
-          <p class="highlight">👉 que você viva inglês dentro da sua própria rotina.</p>
         </section>
-
-        <div class="divider"></div>
 
         <section>
-          <h2>Como isso funciona na prática</h2>
-          <p>Você continua fazendo o que já faz:</p>
-          <ul>
-            <li>séries</li>
-            <li>futebol</li>
-            <li>anime</li>
-            <li>dorama</li>
-            <li>música</li>
-            <li>vídeos</li>
-            <li>podcasts</li>
-          </ul>
-
-          <p>A diferença é que agora:</p>
-          <ul>
-            <li>o nível é o correto</li>
-            <li>o material é escolhido com intenção</li>
-            <li>a progressão é planejada</li>
-            <li>a repetição é estratégica</li>
-          </ul>
-
-          <p>
-            Nada é forçado. Nada é artificial.
-          </p>
-          <p>
-            A fala não é treinada. Ela emerge depois de meses de compreensão acumulada.
-          </p>
+            <h2>O que muda quando a ordem é correta</h2>
+            <p>Quando você segue o processo certo:</p>
+            
+            <div style="margin: 30px 0;">
+                <p>✓ o entendimento cresce primeiro</p>
+                <p>✓ os padrões se fixam naturalmente</p>
+                <p>✓ a tradução mental desaparece</p>
+                <p>✓ a fala surge sem esforço consciente</p>
+            </div>
+            
+            <p style="text-align: center; font-size: 1.2em; margin-top: 40px;">
+                <strong>Você não "decide" falar melhor.<br>
+                Você percebe que já está falando.</strong>
+            </p>
         </section>
-
-        <div class="divider"></div>
 
         <section>
-          <h2>Imagine esse cenário</h2>
-          <p>
-            Você dá play em algo que veria de qualquer forma — só que agora em inglês.
-          </p>
-          <p>
-            No início, entende partes. Depois, entende frases. Depois, diálogos inteiros.
-          </p>
+            <h2>Como essa mentoria constrói fluência de verdade</h2>
+            <p style="text-align: center; margin-bottom: 40px;">Aqui, o foco é resultado funcional.<br>
+            O método existe para garantir esse resultado.</p>
 
-          <p>Sem perceber:</p>
-          <ul>
-            <li>o ouvido destrava</li>
-            <li>a tradução some</li>
-            <li>respostas surgem sozinhas</li>
-          </ul>
-
-          <p>
-            Você não está estudando. Você está adquirindo.
-          </p>
-
-          <p>
-            Agora imagine isso acontecendo todos os dias. Por meses. Por um ano. Por dois.
-          </p>
-
-          <p>
-            Essa fluência não vai embora, porque não foi decorada.
-            <span class="highlight">Foi construída.</span>
-          </p>
-        </section>
-
-        <div class="divider"></div>
-
-        <section>
-          <h2>Para quem é — e para quem não é</h2>
-
-          <h3>Não é para quem:</h3>
-          <ul>
-            <li>quer resultado rápido</li>
-            <li>busca truque, atalho ou fórmula</li>
-            <li>quer “aprender regras”</li>
-            <li>acredita em fluência em 3 meses</li>
-            <li>não pretende inserir inglês no cotidiano</li>
-          </ul>
-
-          <h3>É para quem:</h3>
-          <ul>
-            <li>quer fluência sólida em 1–2 anos</li>
-            <li>aceita um processo previsível e natural</li>
-            <li>entende que consistência vence intensidade</li>
-            <li>quer aprender sem ansiedade</li>
-            <li>prefere viver o idioma em vez de estudá-lo</li>
-          </ul>
-
-          <p>Se isso descreve você, continue.</p>
-        </section>
-
-        <div class="divider"></div>
-
-        <section>
-          <h2>Como funciona a mentoria</h2>
-          <p>
-            A mentoria é individual (<span class="highlight">1:1</span>).
-          </p>
-          <p>
-            Nós conversamos. Eu entendo sua rotina, seus horários, seus interesses e suas limitações reais.
-          </p>
-
-          <p>
-            A partir disso, eu desenho um plano de aquisição sob medida, onde:
-          </p>
-          <ul>
-            <li>você sabe exatamente o que consumir</li>
-            <li>entende quando repetir</li>
-            <li>sabe quando avançar</li>
-            <li>reconhece evolução sem ansiedade</li>
-            <li>nunca fica perdido ou em dúvida</li>
-          </ul>
-
-          <p>
-            Quando necessário, eu produzo input compreensível personalizado.
-            Mas o principal não é o material.
-          </p>
-
-          <p>
-            É a direção constante, os ajustes finos e a clareza absoluta sobre o caminho até a fluência.
-          </p>
-
-          <p class="highlight">
-            São poucas vagas. De propósito.
-          </p>
-
-          <p>
-            Porque fluência real exige acompanhamento real.
-          </p>
-        </section>
-
-        <div class="divider"></div>
-
-        <section>
-          <h2>Se você chegou até aqui</h2>
-          <p>
-            Provavelmente já percebeu: isso não é sobre aprender inglês.
-          </p>
-          <p class="highlight">
-            É sobre parar de lutar contra o próprio cérebro.
-          </p>
-          <p>
-            Se quiser conversar e ver se a mentoria faz sentido para você,
-            me chama no WhatsApp.
-          </p>
-          <p>
-            Sem pressão. Sem discurso pronto. Apenas clareza.
-          </p>
-        </section>
-
-        <section class="cta-block">
-          <div class="cta-title">Pronto pra começar do jeito certo?</div>
-          <div class="cta-sub">Clique abaixo e me mande uma mensagem agora.</div>
-
-          <a
-            class="cta-btn"
-            href="https://wa.me/5515981298236?text=Ol%C3%A1%2C%20quero%20conhecer%20mais%20sobre%20a%20mentoria"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <svg viewBox="0 0 32 32" aria-hidden="true">
-              <path
-                d="M16.001 2.666c-7.364 0-13.333 5.969-13.333 13.333 0 2.353.615 4.648 1.786 6.676L2.667 29.334l6.855-1.75a13.28 13.28 0 0 0 6.479 1.646h.006c7.364 0 13.333-5.969 13.333-13.333 0-3.563-1.389-6.914-3.913-9.438-2.524-2.524-5.875-3.897-9.426-3.897zm7.91 19.177c-.334.94-1.946 1.79-2.686 1.907-.718.112-1.639.158-2.652-.164-.612-.194-1.397-.453-2.41-.884-4.243-1.842-7.004-6.151-7.217-6.445-.213-.294-1.722-2.295-1.722-4.374 0-2.079 1.094-3.104 1.484-3.525.39-.421.851-.526 1.135-.526.284 0 .568 0 .817.015.263.013.617-.1.967.738.334.812 1.135 2.802 1.235 3.006.1.204.167.445.03.739-.137.294-.206.445-.393.684-.194.243-.41.544-.586.732-.194.206-.395.43-.17.843.226.412 1.003 1.652 2.153 2.675 1.48 1.327 2.722 1.74 3.134 1.934.412.194.651.162.895-.1.244-.263 1.03-1.2 1.303-1.613.273-.412.568-.344.967-.206.399.137 2.522 1.19 2.955 1.406.433.217.718.324.818.506.1.182.1 1.053-.234 1.993z"
-              />
-            </svg>
-            Falar pelo WhatsApp
-          </a>
-
-          <div class="fineprint">
-            Respondo pessoalmente. Se não fizer sentido, eu te digo.
-          </div>
-
-          <!-- Se quiser usar a newsletter, mantenha.
-               Se não usar, pode remover este bloco inteiro sem quebrar nada. -->
-          <!-- <form class="newsletter-form" id="newsletterForm" novalidate>
-            <label for="email">
-              Quer receber conteúdos curtos sobre aquisição natural? (sem spam)
-            </label>
-
-            <div class="newsletter-fields">
-              <input
-                id="email"
-                name="email"
-                type="email"
-                placeholder="Seu e-mail"
-                autocomplete="email"
-                required
-              />
-              <button type="submit">Quero receber</button>
+            <div class="benefit-item">
+                <h4>1. Compreensão automática</h4>
+                <p>Você aprende a consumir inglês todos os dias de forma estratégica:</p>
+                <ul style="margin: 15px 0; padding-left: 30px;">
+                    <li>séries, vídeos, podcasts, conteúdos reais</li>
+                    <li>no nível certo</li>
+                    <li>com progressão planejada</li>
+                </ul>
+                <p class="emphasis">👉 você começa a entender sem esforço.</p>
             </div>
 
-            <div class="newsletter-status" id="newsletterStatus" aria-live="polite"></div>
-          </form> -->
+            <div class="benefit-item">
+                <h4>2. Vocabulário que realmente entra</h4>
+                <p>Você aprende a criar flashcards inteligentes, baseados em:</p>
+                <ul style="margin: 15px 0; padding-left: 30px;">
+                    <li>frequência real da língua</li>
+                    <li>repetição espaçada</li>
+                    <li>contexto significativo</li>
+                </ul>
+                <p>Nada de listas inúteis. Nada de palavras soltas.</p>
+                <p class="emphasis">👉 o vocabulário aparece automaticamente quando você precisa.</p>
+            </div>
+
+            <div class="benefit-item">
+                <h4>3. Treino de fala e sotaque (no momento certo)</h4>
+                <p>A fala não é forçada desde o início.</p>
+                <p>Quando sua base está sólida, você aprende:</p>
+                <ul style="margin: 15px 0; padding-left: 30px;">
+                    <li>como destravar a fala sem ansiedade</li>
+                    <li>como treinar pronúncia e clareza</li>
+                    <li>como melhorar o sotaque de forma consciente</li>
+                    <li>como evitar fossilizar erros</li>
+                </ul>
+                <p class="emphasis">👉 você fala com mais fluidez, confiança e inteligibilidade.</p>
+            </div>
         </section>
 
-        <footer>
-          <span>© Mentoria de Inglês por Aquisição Natural</span>
-        </footer>
-      </div>
+        <section>
+            <h2>Como a mentoria funciona na prática</h2>
+            <p><strong>Essa é uma mentoria individual (1:1).</strong></p>
+            
+            <p style="margin-top: 30px;">Nós começamos com um diagnóstico claro:</p>
+            <ul style="margin: 20px 0; padding-left: 30px;">
+                <li>seu nível real</li>
+                <li>sua rotina</li>
+                <li>seus objetivos práticos</li>
+            </ul>
+            
+            <p>A partir disso, eu crio um <strong>Plano de Aquisição Personalizado</strong>, onde você sabe exatamente:</p>
+            <ul style="margin: 20px 0; padding-left: 30px;">
+                <li>o que consumir</li>
+                <li>quanto tempo por dia</li>
+                <li>quando repetir</li>
+                <li>quando avançar</li>
+                <li>quando iniciar o treino de fala</li>
+                <li>como medir progresso sem ansiedade</li>
+            </ul>
+            
+            <p style="text-align: center; font-size: 1.2em; margin-top: 40px;">
+                <strong>Você nunca fica perdido.<br>
+                Você sempre sabe o próximo passo.</strong>
+            </p>
+        </section>
+
+        <section>
+            <h2>Para quem é (e para quem não é)</h2>
+            
+            <div class="two-columns">
+                <div class="column">
+                    <h4>Não é para quem:</h4>
+                    <ul>
+                        <li>quer fluência em 3 meses</li>
+                        <li>busca truque ou atalho</li>
+                        <li>gosta de estudar regras</li>
+                        <li>quer conversar "desde o dia 1"</li>
+                        <li>não pretende inserir inglês na rotina</li>
+                    </ul>
+                </div>
+                
+                <div class="column positive">
+                    <h4>É para quem:</h4>
+                    <ul>
+                        <li>quer fluência sólida em 1–2 anos</li>
+                        <li>aceita um processo previsível</li>
+                        <li>entende que consistência vence intensidade</li>
+                        <li>quer aprender sem ansiedade</li>
+                        <li>prefere adquirir inglês, não estudar inglês</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Por que são poucas vagas</h2>
+            <p>Porque fluência real exige acompanhamento real.</p>
+            
+            <p style="margin-top: 30px;">
+                Isso não é curso gravado.<br>
+                Não é método genérico.<br>
+                Não é escala artificial.
+            </p>
+            
+            <p style="text-align: center; font-size: 1.2em; margin-top: 40px;">
+                <strong>Poucas vagas não são marketing.<br>
+                São limite operacional.</strong>
+            </p>
+        </section>
     </div>
 
-    <script>
-      // Newsletter (exemplo front-end). Ajuste a URL do endpoint se você usar.
-      (function () {
-        const form = document.getElementById("newsletterForm");
-        if (!form) return;
-
-        const statusEl = document.getElementById("newsletterStatus");
-        const emailEl = document.getElementById("email");
-
-        function setStatus(type, text) {
-          if (!statusEl) return;
-          if (!type) {
-            statusEl.innerHTML = "";
-            return;
-          }
-
-          const icon =
-            type === "success"
-              ? `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg>`
-              : `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm1 15h-2v-2h2Zm0-4h-2V7h2Z"/></svg>`;
-
-          statusEl.innerHTML = `
-            <div class="status-message ${type}">
-              ${icon}
-              <span>${text}</span>
-            </div>
-          `;
-        }
-
-        form.addEventListener("submit", async function (e) {
-          e.preventDefault();
-          setStatus(null, "");
-          const email = (emailEl.value || "").trim();
-
-          if (!email) {
-            setStatus("error", "Digite um e-mail válido.");
-            return;
-          }
-
-          form.classList.add("is-sending");
-
-          try {
-            // Troque por seu endpoint real (ex.: /api/newsletter).
-            // Se você não tiver backend, remova este script inteiro.
-            const res = await fetch("/api/newsletter", {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ email }),
-            });
-
-            if (!res.ok) throw new Error("Falha no envio.");
-
-            setStatus("success", "Pronto! Confirme no seu e-mail (se necessário).");
-            form.reset();
-          } catch (err) {
-            setStatus("error", "Não consegui cadastrar agora. Tente novamente em instantes.");
-          } finally {
-            form.classList.remove("is-sending");
-          }
-        });
-      })();
-    </script>
-  </body>
+    <div class="cta-section">
+        <div class="container">
+            <h2 style="color: white; font-size: 2.2em; margin-bottom: 20px;">Em resumo</h2>
+            <p style="font-size: 1.2em; margin-bottom: 30px;">Isso não é sobre aprender inglês.</p>
+            
+            <p style="font-size: 1.2em; margin-bottom: 10px;"><strong>É sobre:</strong></p>
+            <p style="font-size: 1.1em;">
+                parar de traduzir • parar de travar • entender em tempo real<br>
+                falar com clareza • construir fluência que não vai embora
+            </p>
+            
+            <p style="font-size: 1.2em; margin-top: 50px; margin-bottom: 10px;">
+                Se você quer saber se a mentoria faz sentido para o seu caso,<br>
+                <strong>me chama no WhatsApp.</strong>
+            </p>
+            
+            <p style="margin-bottom: 40px;">
+                Sem pressão. Sem discurso pronto.<br>
+                Se não fizer sentido, eu te digo.
+            </p>
+            
+            <a href="https://wa.me/5515981298236?text=Ol%C3%A1%2C%20quero%20conhecer%20mais%20sobre%20a%20mentoria" class="cta-button">
+                <svg class="whatsapp-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                </svg>
+                Fale Comigo Agora
+            </a>
+            
+            <p style="font-size: 0.9em; margin-top: 30px; opacity: 0.8;">
+                Clique no botão acima para abrir uma conversa no WhatsApp
+            </p>
+        </div>
+    </div>
+</body>
 </html>
