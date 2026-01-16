@@ -148,6 +148,55 @@
             margin-bottom: 15px;
         }
 
+        .qa-container {
+            margin: 40px 0;
+        }
+
+        .qa-item {
+            background: #334155;
+            padding: 25px 30px;
+            margin: 15px 0;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .qa-item:hover {
+            background: #3d4d66;
+            transform: translateX(5px);
+        }
+
+        .qa-question {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #f1f5f9;
+        }
+
+        .qa-emoji {
+            font-size: 1.3em;
+            flex-shrink: 0;
+        }
+
+        .qa-answer {
+            margin-top: 15px;
+            padding-left: 40px;
+            color: #cbd5e1;
+            line-height: 1.8;
+        }
+
+        .qa-answer ul {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+
+        .qa-answer li {
+            margin: 8px 0;
+        }
+
         .cta-section {
             background: #1a202c;
             color: white;
@@ -208,6 +257,14 @@
 
             h2 {
                 font-size: 1.6em;
+            }
+
+            .qa-question {
+                font-size: 1em;
+            }
+
+            .qa-answer {
+                padding-left: 0;
             }
         }
     </style>
@@ -279,6 +336,83 @@
                     <li>parar de se sentir limitado por idioma</li>
                     <li>aumentar seu valor profissional real</li>
                 </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2 style="text-align: center; margin-bottom: 40px;">O que essa mentoria resolve na prática</h2>
+            
+            <div class="qa-container">
+                <div class="qa-item">
+                    <div class="qa-question">
+                        <span class="qa-emoji">👉</span>
+                        <span>Se você se sente perdido e não sabe por onde começar</span>
+                    </div>
+                    <div class="qa-answer">
+                        Você recebe um passo a passo claro, sabendo exatamente o que estudar, quando estudar e por quê, sem perder tempo com métodos genéricos.
+                    </div>
+                </div>
+
+                <div class="qa-item">
+                    <div class="qa-question">
+                        <span class="qa-emoji">👉</span>
+                        <span>Se você estuda palavras, mas sempre esquece tudo</span>
+                    </div>
+                    <div class="qa-answer">
+                        Você aprende as técnicas mais eficientes de retenção, usadas para memorizar vocabulário de forma definitiva, mesmo estudando pouco por dia.
+                    </div>
+                </div>
+
+                <div class="qa-item">
+                    <div class="qa-question">
+                        <span class="qa-emoji">👉</span>
+                        <span>Se você precisa treinar a fala, mas não sabe como praticar</span>
+                    </div>
+                    <div class="qa-answer">
+                        Você aprende uma estratégia diária de prática de fala, que permite:
+                        <ul>
+                            <li>Treinar todos os dias</li>
+                            <li>Melhorar o sotaque</li>
+                            <li>Aumentar a compreensão da língua</li>
+                        </ul>
+                        Mesmo estudando sozinho.
+                    </div>
+                </div>
+
+                <div class="qa-item">
+                    <div class="qa-question">
+                        <span class="qa-emoji">👉</span>
+                        <span>Se o listening parece impossível</span>
+                    </div>
+                    <div class="qa-answer">
+                        Você aprende como treinar listening do jeito certo, sem esforço cognitivo absurdo e sem precisar passar horas ouvindo algo que não entende.
+                    </div>
+                </div>
+
+                <div class="qa-item">
+                    <div class="qa-question">
+                        <span class="qa-emoji">👉</span>
+                        <span>Se você quer melhorar a escrita</span>
+                    </div>
+                    <div class="qa-answer">
+                        Você segue um método simples e comprovado:
+                        <ul>
+                            <li>Ler de forma estratégica</li>
+                            <li>Escrever copiando bons modelos</li>
+                            <li>Evoluir para escrita autoral com confiança</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="qa-item">
+                    <div class="qa-question">
+                        <span class="qa-emoji">👉</span>
+                        <span>Se você quer evoluir na carreira usando o idioma</span>
+                    </div>
+                    <div class="qa-answer">
+                        Você aprende como deixar claro para recrutadores, líderes e clientes o seu nível real no idioma — e como transformar isso em vantagem profissional.
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -496,7 +630,7 @@
             </a>
             
             <p style="font-size: 0.9em; margin-top: 30px; opacity: 0.8;">
-                👉 Clique abaixo para aplicar à mentoria
+                👉 Clique acima para aplicar à mentoria
             </p>
         </div>
     </div>
