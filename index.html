@@ -5,11 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mentoria de Inglês</title>
 
-    <!-- Tailwind CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script defer src="/_vercel/insights/script.js"></script>
 
-    <!-- Tailwind custom config (equivale ao tailwind.config.js) -->
     <script>
       tailwind.config = {
         theme: {
@@ -24,31 +21,11 @@
               "glow-purple-light": "hsl(270 80% 70%)",
               "glow-purple-dark": "hsl(270 80% 45%)",
             },
-            animation: {
-              float: "float 6s ease-in-out infinite",
-              "fade-up": "fadeUp 0.8s ease forwards",
-              "pulse-glow": "pulseGlow 2s ease-in-out infinite",
-            },
-            keyframes: {
-              float: {
-                "0%,100%": { transform: "translateY(0)" },
-                "50%": { transform: "translateY(-20px)" },
-              },
-              fadeUp: {
-                from: { opacity: 0, transform: "translateY(20px)" },
-                to: { opacity: 1, transform: "translateY(0)" },
-              },
-              pulseGlow: {
-                "0%,100%": { opacity: 0.6 },
-                "50%": { opacity: 1 },
-              },
-            },
           },
         },
       };
     </script>
 
-    <!-- CSS custom para efeitos que Tailwind CDN não cobre -->
     <style>
       .bg-gradient-radial-purple {
         background: radial-gradient(
@@ -76,253 +53,189 @@
   </head>
 
   <body class="bg-background text-foreground overflow-x-hidden">
-    <section class="relative overflow-hidden py-2">
-      <div class="absolute inset-0 bg-gradient-radial-purple opacity-30"></div>
 
-      <div class="relative z-10 max-w-5xl mx-auto px-6 text-center">
+    <!-- HERO -->
+    <section class="relative py-24 text-center overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-radial-purple opacity-40"></div>
+
+      <div class="relative z-10 max-w-5xl mx-auto px-6">
         <h2 class="text-3xl md:text-5xl font-bold mb-4">
           Quem fala inglês
           <span class="text-glow-purple glow-purple-text"
             >joga outro jogo.</span
           >
         </h2>
-
+        
         <p class="text-gray-400 max-w-2xl mx-auto mb-12">
           Em poucos minutos você vai descobrir por que essa mentoria é diferente
           de tudo que você já tentou.
         </p>
 
+
+        <!-- VÍDEO (mantido) -->
         <div
-          class="relative max-w-3xl mx-auto rounded-[24px] border-gradient-purple bg-card p-4 shadow-xl mb-6"
-          style="perspective: 1000px"
+          class="relative max-w-3xl mx-auto rounded-[24px] border-gradient-purple bg-card p-4 shadow-xl mb-10"
         >
           <div
             class="relative rounded-2xl overflow-hidden border border-border aspect-video bg-black"
           >
-           <iframe
+            <iframe
               class="w-full h-full"
               src="https://www.youtube.com/embed/cwvlOa53DsQ?rel=0&modestbranding=1"
               title="Mentoria de Inglês"
               frameborder="0"
-              allow="
-                accelerometer;
-                autoplay;
-                clipboard-write;
-                encrypted-media;
-                gyroscope;
-                picture-in-picture;
-              "
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
               allowfullscreen
             ></iframe>
           </div>
         </div>
 
-        <!-- BOTÃO CENTRALIZADO -->
-        <div class="flex justify-center mt-2">
-          <a
-            href="https://wa.me/5515981298236?text=Ol%C3%A1%2C%20quero%20conhecer%20mais%20sobre%20a%20mentoria"
-            target="_blank"
-            class="inline-block bg-gradient-to-r from-glow-purple-light via-glow-purple to-glow-purple-dark text-white font-bold px-10 py-4 rounded-xl transition transform hover:scale-105 glow-purple mt-3 mb-10"
-          >
-            💬 Fale comigo agora
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section
-      class="relative min-h-screen flex items-center justify-center overflow-hidden"
-    >
-      <div class="absolute inset-0 bg-gradient-radial-purple"></div>
-
-      <div
-        class="absolute top-1/4 left-1/4 w-96 h-96 bg-glow-purple/10 rounded-full blur-3xl animate-float"
-      ></div>
-      <div
-        class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-glow-purple/5 rounded-full blur-3xl animate-float"
-      ></div>
-
-      <div class="relative z-10 max-w-4xl mx-auto text-center px-6">
-        <div
-          class="inline-flex items-center gap-2 px-4 py-2 rounded-full border-gradient-purple bg-card/50 backdrop-blur mb-8 animate-fade-up"
-        >
-          <span
-            class="w-2 h-2 bg-glow-purple rounded-full animate-pulse"
-          ></span>
-          <span class="text-sm text-muted">Mentoria exclusiva</span>
-        </div>
-
-        <h1
-          class="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 animate-fade-up"
-        >
-          Pare de estudar inglês.<br />
-          <span class="text-glow-purple glow-purple-text">Comece a viver.</span>
-        </h1>
-
-        <p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-10">
-          Um método direto, prático e individual para resultados reais — sem
-          enrolação.
-        </p>
-
         <a
           href="https://wa.me/5515981298236?text=Ol%C3%A1%2C%20quero%20conhecer%20mais%20sobre%20a%20mentoria"
           target="_blank"
-          class="inline-block bg-gradient-to-r from-glow-purple-light via-glow-purple to-glow-purple-dark text-white font-bold px-10 py-4 rounded-xl transition transform hover:scale-105 glow-purple"
+          class="inline-flex items-center justify-center gap-3 bg-gradient-to-r from-glow-purple-light via-glow-purple to-glow-purple-dark text-white font-bold px-10 py-4 rounded-xl transition transform hover:scale-105 glow-purple"
         >
-          Quero destravar meu inglês →
+        <!-- Ícone WhatsApp SVG -->
+<svg xmlns="http://www.w3.org/2000/svg" 
+     viewBox="0 0 32 32" 
+     class="text-white w-6 h-6"
+     fill="currentColor">
+  <path d="M16 .4C7.4.4.4 7.4.4 16c0 2.8.7 5.5 2.1 7.9L.3 31.7l8-2.1c2.3 1.3 4.9 2 7.7 2 8.6 0 15.6-7 15.6-15.6S24.6.4 16 .4zm0 28.6c-2.4 0-4.7-.6-6.8-1.8l-.5-.3-4.8 1.3 1.3-4.7-.3-.5C3.7 20.8 3 18.5 3 16 3 8.8 8.8 3 16 3s13 5.8 13 13-5.8 13-13 13zm7.3-9.5c-.4-.2-2.2-1.1-2.5-1.2-.3-.1-.6-.2-.8.2-.2.4-.9 1.2-1.1 1.4-.2.2-.4.2-.8.1-.4-.2-1.6-.6-3-1.9-1.1-1-1.9-2.3-2.1-2.7-.2-.4 0-.6.1-.8.1-.1.4-.4.5-.6.2-.2.2-.4.3-.6.1-.2 0-.5 0-.6 0-.2-.8-1.9-1.1-2.6-.3-.7-.6-.6-.8-.6h-.7c-.2 0-.6.1-.9.4-.3.3-1.2 1.2-1.2 3 0 1.8 1.3 3.5 1.5 3.8.2.3 2.6 4 6.3 5.6.9.4 1.6.6 2.2.8.9.3 1.7.2 2.4.1.7-.1 2.2-.9 2.5-1.7.3-.8.3-1.6.2-1.7-.1-.1-.3-.2-.7-.4z"/>
+</svg>
+
+          Fale comigo agora 
         </a>
       </div>
     </section>
 
-    <!-- DIFERENCIAIS -->
-    <section class="relative py-32">
-      <div class="absolute inset-0 bg-gradient-radial-purple opacity-40"></div>
+    <!-- O QUE EU FAÇO -->
+    <section class="py-28 relative">
+      <div class="absolute inset-0 bg-gradient-radial-purple opacity-20"></div>
 
-      <div class="relative z-10 max-w-6xl mx-auto px-6">
-        <div class="text-center max-w-2xl mx-auto mb-20">
-          <h2 class="text-3xl md:text-5xl font-bold mb-4">
-            Tudo o que você precisa para alcançar a
-            <span class="text-glow-purple glow-purple-text">fluência</span>
-          </h2>
-          <p class="text-gray-400">
-            Um método pensado para quem quer resultado, não certificado.
+      <div class="relative z-10 max-w-4xl mx-auto px-6">
+        <h2 class="text-3xl md:text-5xl font-bold mb-10 text-center">
+          O que eu faço
+        </h2>
+
+        <div class="space-y-6 text-lg text-gray-300 leading-relaxed">
+          <p>
+            Eu ajudo pessoas a saírem do zero (ou de onde estiverem travadas)
+            até a fluência no inglês, com naturalidade e leveza — sem depender
+            de gramática complicada nem de métodos mirabolantes.
           </p>
-        </div>
 
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <!-- Card -->
-          <div
-            class="group p-6 rounded-2xl border-gradient-purple bg-card/40 backdrop-blur transition hover:bg-card/60"
-          >
-            <div
-              class="w-12 h-12 mb-4 rounded-xl bg-glow-purple/20 flex items-center justify-center"
-            >
-              🎯
-            </div>
-            <h3 class="font-semibold mb-2">Método direto</h3>
-            <p class="text-sm text-gray-400">
-              Sem rodeios. Você aprende o que realmente importa para falar.
-            </p>
-          </div>
+          <p>
+            Já ajudei dezenas de alunos a compreender, falar e manter conversas
+            reais em inglês usando um sistema enxuto e previsível.
+          </p>
 
-          <div
-            class="group p-6 rounded-2xl border-gradient-purple bg-card/40 backdrop-blur transition hover:bg-card/60"
-          >
-            <div
-              class="w-12 h-12 mb-4 rounded-xl bg-glow-purple/20 flex items-center justify-center"
-            >
-              👤
-            </div>
-            <h3 class="font-semibold mb-2">Acompanhamento</h3>
-            <p class="text-sm text-gray-400">
-              Feedback individual focado na sua evolução.
-            </p>
-          </div>
-
-          <div
-            class="group p-6 rounded-2xl border-gradient-purple bg-card/40 backdrop-blur transition hover:bg-card/60"
-          >
-            <div
-              class="w-12 h-12 mb-4 rounded-xl bg-glow-purple/20 flex items-center justify-center"
-            >
-              📈
-            </div>
-            <h3 class="font-semibold mb-2">Evolução rápida</h3>
-            <p class="text-sm text-gray-400">
-              Resultados perceptíveis em poucas semanas.
-            </p>
-          </div>
-
-          <div
-            class="group p-6 rounded-2xl border-gradient-purple bg-card/40 backdrop-blur transition hover:bg-card/60"
-          >
-            <div
-              class="w-12 h-12 mb-4 rounded-xl bg-glow-purple/20 flex items-center justify-center"
-            >
-              💬
-            </div>
-            <h3 class="font-semibold mb-2">Inglês real</h3>
-            <p class="text-sm text-gray-400">
-              Aprenda o que você realmente vai usar no dia a dia.
-            </p>
-          </div>
+          <p>
+            O foco é simples: construção sólida de pronúncia e compreensão
+            desde o primeiro dia, para que o estudo finalmente se converta
+            em segurança real ao falar.
+          </p>
         </div>
       </div>
     </section>
 
-    <!-- MÉTODO -->
-    <section class="relative py-32 overflow-hidden">
-      <div
-        class="absolute left-0 top-1/2 w-96 h-96 bg-glow-purple/10 rounded-full blur-3xl"
-      ></div>
-      <div
-        class="absolute right-0 top-1/4 w-64 h-64 bg-glow-purple/10 rounded-full blur-3xl"
-      ></div>
-
-      <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
-        <h2 class="text-3xl md:text-5xl font-bold mb-6">
-          Aprenda de maneira 
-          <span class="text-glow-purple glow-purple-text">natural</span>
+    <!-- PARA QUEM FUNCIONA -->
+    <section class="py-28 bg-card/40">
+      <div class="max-w-5xl mx-auto px-6">
+        <h2 class="text-3xl md:text-5xl font-bold mb-12 text-center">
+          Para quem isso funciona de verdade?
         </h2>
 
-        <p class="text-gray-400 mb-12">
-          Não é mais um curso genérico. Receba um caminho previsível até a fluência.
-        </p>
+        <div class="grid md:grid-cols-2 gap-8 text-gray-300">
+          <div class="space-y-4">
+            <p>✔ Já estudou inglês por meses ou anos</p>
+            <p>✔ Já investiu em cursos e aplicativos</p>
+            <p>✔ Já tentou fazer “do jeito certo”</p>
+            <p>✔ Percebe que estudar não virou segurança para falar</p>
+          </div>
 
-        <div class="grid sm:grid-cols-2 gap-4 text-left">
-          <div
-            class="p-4 rounded-xl border-gradient-purple bg-card/40 flex gap-3"
-          >
-            ✔ Método validado por alunos reais
+          <div class="space-y-4">
+            <p>✔ Entende bastante, mas trava ao falar</p>
+            <p>✔ Sente que sempre está começando do zero</p>
+            <p>✔ Quer sair da sobrevivência e ganhar confiança</p>
+            <p>✔ Busca clareza de progresso real</p>
           </div>
-          <div
-            class="p-4 rounded-xl border-gradient-purple bg-card/40 flex gap-3"
-          >
-            ✔ Foco em resultado, não horas
-          </div>
-          <div
-            class="p-4 rounded-xl border-gradient-purple bg-card/40 flex gap-3"
-          >
-            ✔ Aprendizado direto ao ponto
-          </div>
-          <div
-            class="p-4 rounded-xl border-gradient-purple bg-card/40 flex gap-3"
-          >
-            ✔ Evolução no seu ritmo
-          </div>
+        </div>
+
+        <div class="mt-12 text-center text-gray-400 max-w-2xl mx-auto">
+          <p>
+            O ponto em comum não é o nível de inglês.
+            <br /><br />
+            <span class="text-glow-purple font-semibold">
+              É maturidade no aprendizado.
+            </span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FILTRO -->
+    <section class="py-28 relative">
+      <div class="absolute inset-0 bg-gradient-radial-purple opacity-30"></div>
+
+      <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
+        <h2 class="text-3xl md:text-5xl font-bold mb-12">
+          Não avance se você:
+        </h2>
+
+        <div class="space-y-6 text-lg text-gray-300">
+          <p>
+            1. Quer uma fórmula mágica para falar inglês em 30 dias.
+          </p>
+          <p>
+            2. Acredita que decorar regras gramaticais gera fluência.
+          </p>
+          <p>
+            3. Busca apenas traduzir frases sem desenvolver compreensão real.
+          </p>
+          <p>
+            4. Não está disposto a seguir um processo estruturado e progressivo.
+          </p>
         </div>
       </div>
     </section>
 
     <!-- CTA FINAL -->
-    <section class="relative py-32">
-      <div class="absolute inset-0 bg-gradient-radial-purple opacity-60"></div>
-
-      <div class="relative z-10 max-w-3xl mx-auto px-6 text-center">
-        <h2 class="text-4xl md:text-6xl font-bold mb-6">
-          Pronto para dar o
-          <span class="text-glow-purple glow-purple-text">próximo passo?</span>
+    <section class="py-28 bg-card/40 text-center">
+      <div class="max-w-3xl mx-auto px-6">
+        <h2 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+          Se isso fez sentido para você —
+          <span class="text-glow-purple glow-purple-text">
+            vamos construir sua fluência juntos.
+          </span>
         </h2>
 
-        <p class="text-gray-400 mb-10">Sua fluência começa com uma conversa.</p>
+        <p class="text-gray-400 mb-10">
+          Com estrutura. Com clareza. E com leveza.
+        </p>
 
         <a
           href="https://wa.me/5515981298236?text=Ol%C3%A1%2C%20quero%20conhecer%20mais%20sobre%20a%20mentoria"
           target="_blank"
-          class="inline-block bg-gradient-to-r from-glow-purple-light via-glow-purple to-glow-purple-dark text-white font-bold px-10 py-4 rounded-xl transition transform hover:scale-105 glow-purple"
+          class="inline-flex items-center justify-center gap-3 bg-gradient-to-r from-glow-purple-light via-glow-purple to-glow-purple-dark text-white font-bold px-10 py-4 rounded-xl transition transform hover:scale-105 glow-purple"
         >
-          💬 Fale comigo agora
+        <svg xmlns="http://www.w3.org/2000/svg" 
+     viewBox="0 0 32 32" 
+     class="text-white w-6 h-6"
+     fill="currentColor">
+  <path d="M16 .4C7.4.4.4 7.4.4 16c0 2.8.7 5.5 2.1 7.9L.3 31.7l8-2.1c2.3 1.3 4.9 2 7.7 2 8.6 0 15.6-7 15.6-15.6S24.6.4 16 .4zm0 28.6c-2.4 0-4.7-.6-6.8-1.8l-.5-.3-4.8 1.3 1.3-4.7-.3-.5C3.7 20.8 3 18.5 3 16 3 8.8 8.8 3 16 3s13 5.8 13 13-5.8 13-13 13zm7.3-9.5c-.4-.2-2.2-1.1-2.5-1.2-.3-.1-.6-.2-.8.2-.2.4-.9 1.2-1.1 1.4-.2.2-.4.2-.8.1-.4-.2-1.6-.6-3-1.9-1.1-1-1.9-2.3-2.1-2.7-.2-.4 0-.6.1-.8.1-.1.4-.4.5-.6.2-.2.2-.4.3-.6.1-.2 0-.5 0-.6 0-.2-.8-1.9-1.1-2.6-.3-.7-.6-.6-.8-.6h-.7c-.2 0-.6.1-.9.4-.3.3-1.2 1.2-1.2 3 0 1.8 1.3 3.5 1.5 3.8.2.3 2.6 4 6.3 5.6.9.4 1.6.6 2.2.8.9.3 1.7.2 2.4.1.7-.1 2.2-.9 2.5-1.7.3-.8.3-1.6.2-1.7-.1-.1-.3-.2-.7-.4z"/>
+</svg>
+          Falar comigo no WhatsApp
         </a>
 
-        <p class="text-sm text-gray-500 mt-6">Resposta rápida pelo WhatsApp</p>
+        <p class="text-sm text-gray-500 mt-6">
+          Resposta direta. Sem enrolação.
+        </p>
       </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer
-      class="py-8 border-t border-border/50 text-center text-sm text-gray-500"
-    >
+    <footer class="py-8 border-t border-border/50 text-center text-sm text-gray-500">
       © 2026 Mentoria de Inglês. Todos os direitos reservados.
     </footer>
+
   </body>
 </html>
