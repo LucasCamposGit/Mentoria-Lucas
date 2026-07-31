@@ -1,288 +1,726 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mentoria de Inglês</title>
-
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script defer src="/_vercel/insights/script.js"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              background: "hsl(240 10% 3.9%)",
-              foreground: "hsl(0 0% 98%)",
-              muted: "hsl(240 3.7% 15.9%)",
-              card: "hsl(240 10% 6%)",
-              border: "hsl(240 3.7% 15.9%)",
-              "glow-purple": "hsl(270 80% 60%)",
-              "glow-purple-light": "hsl(270 80% 70%)",
-              "glow-purple-dark": "hsl(270 80% 45%)",
-            },
-          },
-        },
-      };
-    </script>
-
+    <title>Brasileiro Gringo — Metodologia &amp; Conversação</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet" />
     <style>
-      .bg-gradient-radial-purple {
-        background: radial-gradient(
-          circle at center,
-          rgba(168, 85, 247, 0.25),
-          transparent 70%
-        );
-      }
+        /* ── Reset e variáveis ── */
+        :root {
+            --verde: #caff33;
+            --preto: #0a0a0a;
+            --cinza-escuro: #141414;
+            --cinza-medio: #1e1e1e;
+            --cinza-texto: #888;
+            --branco: #f5f5f0;
+            --vermelho-alerta: #e05555;
+        }
 
-      .border-gradient-purple {
-        border: 1px solid transparent;
-        background:
-          linear-gradient(#000, #000) padding-box,
-          linear-gradient(90deg, #a855f7, #9333ea) border-box;
-      }
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-      .glow-purple {
-        box-shadow: 0 0 40px rgba(168, 85, 247, 0.45);
-      }
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
 
-      .glow-purple-text {
-        text-shadow: 0 0 30px rgba(168, 85, 247, 0.6);
-      }
+        body {
+            background-color: var(--preto);
+            color: var(--branco);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.7;
+            font-weight: 400;
+            font-size: 16px;
+            letter-spacing: -0.01em;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ── Header ── */
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background-color: rgba(10, 10, 10, 0.92);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--cinza-medio);
+            padding: 16px 0;
+        }
+        .site-header .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .logo {
+            font-weight: 800;
+            font-size: 1.25rem;
+            letter-spacing: -0.03em;
+            color: var(--branco);
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+        .logo span {
+            color: var(--verde);
+        }
+        .nav-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--verde);
+            color: var(--preto);
+            font-weight: 700;
+            font-size: 0.8rem;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: 10px 18px;
+            border-radius: 4px;
+            transition: opacity 0.2s ease;
+            white-space: nowrap;
+        }
+        .nav-cta:hover {
+            opacity: 0.85;
+        }
+        .nav-cta svg {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+            fill: currentColor;
+        }
+
+        /* ── Sections ── */
+        section {
+            padding: 64px 0;
+        }
+        section:first-of-type {
+            padding-top: 48px;
+        }
+
+        /* ── Typography ── */
+        h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            line-height: 1.2;
+            margin-bottom: 28px;
+            color: var(--branco);
+        }
+        h3 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1.35;
+            margin-bottom: 16px;
+            color: var(--branco);
+        }
+        p {
+            margin-bottom: 18px;
+            color: #d4d4ce;
+            font-size: 1rem;
+            line-height: 1.75;
+        }
+        .accent-text {
+            color: var(--verde);
+            font-weight: 700;
+        }
+        .section-label {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--verde);
+            margin-bottom: 14px;
+        }
+
+        .divider {
+            width: 100%;
+            height: 1px;
+            background: var(--cinza-medio);
+            margin: 0;
+            border: none;
+        }
+        .divider-light {
+            width: 100%;
+            height: 1px;
+            background: #2a2a2a;
+            margin: 28px 0;
+            border: none;
+        }
+
+        /* ── Intro ── */
+        .intro-block {
+            background: var(--cinza-escuro);
+            border-left: 3px solid var(--verde);
+            padding: 28px 28px 22px;
+            border-radius: 0 6px 6px 0;
+            margin-bottom: 32px;
+        }
+        .intro-block p {
+            margin-bottom: 12px;
+            color: #e8e8e2;
+            font-weight: 500;
+            font-size: 1.05rem;
+        }
+        .intro-block p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ── Lists ── */
+        .bullet-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 24px;
+        }
+        .bullet-list li {
+            position: relative;
+            padding-left: 22px;
+            margin-bottom: 12px;
+            color: #d4d4ce;
+            line-height: 1.7;
+            font-size: 0.98rem;
+        }
+        .bullet-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 9px;
+            width: 8px;
+            height: 8px;
+            background: var(--verde);
+            border-radius: 2px;
+        }
+        .bullet-list.check-list li::before {
+            background: transparent;
+            border: 2px solid var(--verde);
+            width: 7px;
+            height: 7px;
+            border-radius: 2px;
+            top: 8px;
+        }
+        .bullet-list.x-list li::before {
+            background: transparent;
+            border: 2px solid var(--cinza-texto);
+            width: 7px;
+            height: 7px;
+            border-radius: 2px;
+            top: 8px;
+        }
+
+        /* ── Cards ── */
+        .card {
+            background: var(--cinza-escuro);
+            border: 1px solid var(--cinza-medio);
+            border-radius: 6px;
+            padding: 28px 28px 22px;
+            margin-bottom: 20px;
+        }
+        .card-highlight {
+            border-color: #2a3d00;
+        }
+        .card h3 {
+            margin-bottom: 12px;
+        }
+
+        /* ── Timeline ── */
+        .timeline-item {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 20px;
+            align-items: flex-start;
+        }
+        .timeline-marker {
+            flex-shrink: 0;
+            width: 12px;
+            height: 12px;
+            background: var(--verde);
+            border-radius: 3px;
+            margin-top: 5px;
+        }
+        .timeline-content {
+            color: #d4d4ce;
+            font-size: 0.98rem;
+            line-height: 1.7;
+        }
+        .timeline-content strong {
+            color: var(--branco);
+            font-weight: 600;
+        }
+
+        /* ── CTA ── */
+        .cta-section {
+            background: var(--cinza-escuro);
+            border: 1px solid #2a3d00;
+            border-radius: 8px;
+            padding: 36px 32px;
+            text-align: center;
+            margin: 40px 0;
+        }
+        .cta-section h3 {
+            color: var(--verde);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: var(--verde);
+            color: var(--preto);
+            font-weight: 800;
+            font-size: 1rem;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: 16px 36px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: opacity 0.2s ease, transform 0.15s ease;
+            border: none;
+            width: auto;
+            min-width: 220px;
+        }
+        .btn-primary:hover {
+            opacity: 0.88;
+            transform: translateY(-1px);
+        }
+        .btn-primary svg {
+            width: 22px;
+            height: 22px;
+            flex-shrink: 0;
+            fill: currentColor;
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: transparent;
+            color: var(--verde);
+            font-weight: 700;
+            font-size: 0.95rem;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: 14px 32px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+            border: 2px solid var(--verde);
+        }
+        .btn-secondary:hover {
+            background: rgba(202, 255, 51, 0.06);
+        }
+        .btn-secondary svg {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+            fill: currentColor;
+        }
+
+        /* ── Alert ── */
+        .alert-box {
+            background: var(--cinza-escuro);
+            border: 1px solid #3d1a1a;
+            border-radius: 6px;
+            padding: 24px 28px;
+            margin: 24px 0;
+        }
+        .alert-box p {
+            color: #e8e8e2;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+        .alert-box .red-text {
+            color: var(--vermelho-alerta);
+            font-weight: 700;
+        }
+
+        /* ── FAQ ── */
+        .faq-item {
+            border-bottom: 1px solid var(--cinza-medio);
+            padding: 22px 0;
+        }
+        .faq-item:first-child {
+            border-top: 1px solid var(--cinza-medio);
+        }
+        .faq-question {
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: var(--branco);
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+        }
+        .faq-answer {
+            color: #d4d4ce;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        .faq-answer .arrow {
+            color: var(--verde);
+            font-weight: 700;
+            margin-right: 4px;
+        }
+
+        /* ── Social ── */
+        .social-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin: 16px 0 8px;
+        }
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #d4d4ce;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            padding: 8px 16px;
+            border: 1px solid var(--cinza-medio);
+            border-radius: 4px;
+            transition: border-color 0.2s ease, color 0.2s ease;
+        }
+        .social-link:hover {
+            border-color: var(--verde);
+            color: var(--verde);
+        }
+        .social-link svg {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+        }
+
+        /* ── Closing ── */
+        .closing-block {
+            text-align: center;
+            padding: 48px 0 32px;
+        }
+        .closing-block p {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--branco);
+            margin-bottom: 8px;
+        }
+        .closing-block .signature {
+            color: var(--verde);
+            font-weight: 800;
+            font-size: 1.3rem;
+            letter-spacing: -0.03em;
+        }
+
+        /* ── Footer ── */
+        .site-footer {
+            border-top: 1px solid var(--cinza-medio);
+            padding: 24px 0;
+            text-align: center;
+            color: var(--cinza-texto);
+            font-size: 0.8rem;
+            letter-spacing: 0.02em;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 600px) {
+            h2 {
+                font-size: 1.5rem;
+            }
+            h3 {
+                font-size: 1.15rem;
+            }
+            section {
+                padding: 40px 0;
+            }
+            .container {
+                padding: 0 16px;
+            }
+            .intro-block {
+                padding: 20px 18px 16px;
+            }
+            .card {
+                padding: 20px 18px 16px;
+            }
+            .cta-section {
+                padding: 24px 18px;
+            }
+            .btn-primary {
+                font-size: 0.9rem;
+                padding: 14px 24px;
+                min-width: auto;
+                width: 100%;
+            }
+            .btn-secondary {
+                font-size: 0.85rem;
+                padding: 12px 20px;
+                width: 100%;
+            }
+            .site-header .container {
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+            .logo {
+                font-size: 1rem;
+            }
+            .nav-cta {
+                font-size: 0.7rem;
+                padding: 8px 14px;
+            }
+            .social-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .social-link {
+                justify-content: center;
+            }
+            .timeline-item {
+                gap: 12px;
+            }
+        }
     </style>
-  </head>
+</head>
+<body>
 
-  <body class="bg-background text-foreground overflow-x-hidden">
-
-    <!-- HERO -->
-    <section class="relative py-24 text-center overflow-hidden">
-      <div class="absolute inset-0 bg-gradient-radial-purple opacity-40"></div>
-
-      <div class="relative z-10 max-w-5xl mx-auto px-6">
-        <h2 class="text-3xl md:text-5xl font-bold mb-4">
-          Mais aulas só te afundam em informação solta. 
-
-          <span class="text-glow-purple glow-purple-text"
-            >Direção é o que te faz andar.</span
-          >
-        </h2>
-        
-        <p class="text-gray-400 max-w-2xl mx-auto mb-12">
-          Sem promessas milagrosas. Mas com um mapa tão claro que você nunca mais vai precisar de outro "curso genérico". Assista até o final.
-        </p>
-
-
-        <!-- VÍDEO (mantido) -->
-        <div
-          class="relative max-w-3xl mx-auto rounded-[24px] border-gradient-purple bg-card p-4 shadow-xl mb-10"
-        >
-          <div
-            class="relative rounded-2xl overflow-hidden border border-border aspect-video bg-black"
-          >
-            <iframe
-              class="w-full h-full"
-              src="https://www.youtube.com/embed/cwvlOa53DsQ?rel=0&modestbranding=1"
-              title="Mentoria de Inglês"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
-              allowfullscreen
-            ></iframe>
-          </div>
+    <!-- ═══ HEADER ═══ -->
+    <header class="site-header">
+        <div class="container">
+            <a href="#" class="logo">Brasileiro<span>Gringo</span></a>
+            <a href="https://wa.me/5515981298236?text=Ol%C3%A1%2C%20quero%20ficar%20fluente%20em%20ingl%C3%AAs."
+               target="_blank" rel="noopener noreferrer"
+               class="nav-cta">
+                <!-- Ícone WhatsApp -->
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                </svg>
+                Fale Comigo
+            </a>
         </div>
+    </header>
 
-        <a
-          href="https://wa.me/5515981298236?text=Ol%C3%A1%2C%20quero%20conhecer%20mais%20sobre%20a%20mentoria"
-          target="_blank"
-          class="inline-flex items-center justify-center gap-3 bg-gradient-to-r from-glow-purple-light via-glow-purple to-glow-purple-dark text-white font-bold px-10 py-4 rounded-xl transition transform hover:scale-105 glow-purple"
-        >
-        <!-- Ícone WhatsApp SVG -->
-<svg xmlns="http://www.w3.org/2000/svg" 
-     viewBox="0 0 32 32" 
-     class="text-white w-6 h-6"
-     fill="currentColor">
-  <path d="M16 .4C7.4.4.4 7.4.4 16c0 2.8.7 5.5 2.1 7.9L.3 31.7l8-2.1c2.3 1.3 4.9 2 7.7 2 8.6 0 15.6-7 15.6-15.6S24.6.4 16 .4zm0 28.6c-2.4 0-4.7-.6-6.8-1.8l-.5-.3-4.8 1.3 1.3-4.7-.3-.5C3.7 20.8 3 18.5 3 16 3 8.8 8.8 3 16 3s13 5.8 13 13-5.8 13-13 13zm7.3-9.5c-.4-.2-2.2-1.1-2.5-1.2-.3-.1-.6-.2-.8.2-.2.4-.9 1.2-1.1 1.4-.2.2-.4.2-.8.1-.4-.2-1.6-.6-3-1.9-1.1-1-1.9-2.3-2.1-2.7-.2-.4 0-.6.1-.8.1-.1.4-.4.5-.6.2-.2.2-.4.3-.6.1-.2 0-.5 0-.6 0-.2-.8-1.9-1.1-2.6-.3-.7-.6-.6-.8-.6h-.7c-.2 0-.6.1-.9.4-.3.3-1.2 1.2-1.2 3 0 1.8 1.3 3.5 1.5 3.8.2.3 2.6 4 6.3 5.6.9.4 1.6.6 2.2.8.9.3 1.7.2 2.4.1.7-.1 2.2-.9 2.5-1.7.3-.8.3-1.6.2-1.7-.1-.1-.3-.2-.7-.4z"/>
-</svg>
+    <main>
+        <!-- ═══ INTRO ═══ -->
+        <section>
+            <div class="container">
+                <div class="intro-block">
+                    <p><strong>Se o seu inglês só funciona quando você lê frases soltas... a culpa não é sua. É do método que te ensinaram.</strong></p>
+                    <p>Chega de repetir regras de gramática que você nunca vai usar em uma reunião e esqueça promessas milagrosas de fluência em 30 dias.</p>
+                    <p>O meu trabalho é direto ao ponto: <strong>ajudo você a entender o que os gringos falam e a responder com naturalidade, mesmo que hoje o seu listening seja o seu maior gargalo.</strong></p>
+                </div>
+            </div>
+        </section>
 
-          Fale comigo agora 
-        </a>
-      </div>
-    </section>
+        <hr class="divider" />
 
-   <!-- O QUE EU FAÇO -->
-<section class="py-32 relative">
-  <div class="absolute inset-0 bg-gradient-radial-purple opacity-20"></div>
+        <!-- ═══ PARA QUEM É ═══ -->
+        <section>
+            <div class="container">
+                <span class="section-label">Público</span>
+                <h2>Para quem foi criado este programa?</h2>
+                <ul class="bullet-list">
+                    <li><strong>Profissionais de TI, Founders, Devs e Empreendedores</strong> que já têm leitura intermediária/avançada (leem artigos, documentação e e-mails), mas travam quando o assunto é ouvir e falar.</li>
+                    <li><strong>Quem sente que os nativos "comem" as palavras</strong> e falam rápido demais nas chamadas do dia a dia.</li>
+                    <li><strong>Quem já tentou de tudo</strong> (Duolingo, Cambly, cursinhos tradicionais, professores particulares, Anki, vídeos legendados) e continua travando na hora H.</li>
+                    <li><strong>Quem vive dependente de legendas</strong> para assistir a séries, filmes ou palestras técnicas no YouTube.</li>
+                    <li><strong>Quem responde "yes", "ok", "I agree" em calls globais</strong> sem ter certeza do que perguntaram — só para não ficar em silêncio.</li>
+                    <li><strong>Quem quer migrar para o mercado internacional</strong>, mas nem envia o currículo por medo do processo seletivo em inglês.</li>
+                </ul>
+            </div>
+        </section>
 
-  <div class="relative z-10 max-w-3xl mx-auto px-6">
+        <!-- ═══ AQUI ENTRAM ═══ -->
+        <section>
+            <div class="container">
+                <h3>Aqui entram pessoas que querem:</h3>
+                <ul class="bullet-list check-list">
+                    <li>Transformar o reading intermediário em autonomia total no listening e no speaking.</li>
+                    <li>Superar a sensação de que os nativos falam rápido demais através de técnicas práticas de percepção auditiva.</li>
+                    <li>Eliminar anos de estagnação com um método focado em situações reais de trabalho.</li>
+                    <li>Participar ativamente de processos seletivos internacionais com segurança.</li>
+                    <li>Trabalhar remotamente para o exterior com fluência aplicada, sem depender de certificados.</li>
+                </ul>
+            </div>
+        </section>
 
-    <h2 class="text-3xl md:text-5xl font-bold mb-16 text-center">
-      O que eu faço
-    </h2>
+        <hr class="divider" />
 
-    <div class="space-y-10 text-lg text-gray-300 leading-relaxed">
+        <!-- ═══ QUEM FICA DE FORA ═══ -->
+        <section>
+            <div class="container">
+                <span class="section-label">Transparência</span>
+                <h2>Quem fica de fora</h2>
+                <p>Para não tomarmos o tempo um do outro, <strong>não preencha a aplicação se você:</strong></p>
+                <ul class="bullet-list x-list">
+                    <li>Está procurando um curso do zero (alfabeto, <em>verb to be</em>, gramática tradicional).</li>
+                    <li>Quer fórmulas mágicas para "ficar fluente dormindo em 3 meses".</li>
+                    <li>Quer um professor tradicional para te dar aulas teóricas pela vida toda.</li>
+                    <li>Busca apenas dicas rápidas para provas de proficiência (IELTS/TOEFL).</li>
+                    <li>Procura um curso gravado passivo, sem prática de conversação ao vivo.</li>
+                </ul>
+                <p>Se o seu objetivo é <strong>destravar o seu listening e speaking com cenários do seu dia a dia de trabalho</strong>, usando uma metodologia estruturada para dar autonomia real em reuniões e entrevistas... então este espaço é para você.</p>
+            </div>
+        </section>
 
-      <p class="text-xl md:text-2xl font-semibold text-white">
-        Eu ajudo pessoas a saírem do zero — ou de onde estiverem travadas —
-        até a fluência no inglês.
-      </p>
+        <!-- ═══ CTA SUAVE ═══ -->
+        <section>
+            <div class="container">
+                <div class="card card-highlight">
+                    <p>Se você quer destravar seu listening e speaking usando uma metodologia que respeita seus interesses, com aulas de conversação focadas em situações reais do seu dia a dia, e construir a confiança pra participar de qualquer conversa em inglês sem medo… <span class="accent-text">então esse espaço é pra você.</span></p>
+                    <p>E isso funciona tanto para reuniões, entrevistas e calls com clientes quanto para consumir qualquer conteúdo em inglês sem legenda, seja um podcast técnico ou uma apresentação de produto.</p>
+                </div>
+            </div>
+        </section>
 
-      <p>
-        Com naturalidade. Com leveza.  
-        Sem depender de gramática complicada.  
-        Sem métodos mirabolantes.
-      </p>
+        <hr class="divider" />
 
-      <p class="font-semibold text-white">
-        É isso. E não é teoria.
-      </p>
+        <!-- ═══ RESULTADOS & BACKGROUND ═══ -->
+        <section>
+            <div class="container">
+                <span class="section-label">Credibilidade</span>
+                <h2>Meus Resultados, Projetos e Background</h2>
+                <p>Não criei essa metodologia na teoria. Criei na dor real do mercado:</p>
 
-      <p>
-        Já ajudei dezenas de alunos a compreender, falar e manter conversas
-        reais em inglês usando um sistema enxuto e previsível.
-      </p>
+                <h3>A minha trajetória:</h3>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">Em <strong>2017</strong>, desenvolvi o método <strong>Brasileiro Gringo</strong> para destravar minha própria comunicação de forma autodidata, sem os vícios das escolas tradicionais.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">Em <strong>2023</strong>, comecei a aplicar o método com amigos e profissionais próximos que enfrentavam o mesmo bloqueio na escuta e na fala.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">Em <strong>2025</strong>, levei o conteúdo para o YouTube e abri as primeiras turmas oficiais de mentoria.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">Hoje, em <strong>2026</strong>, já são <strong>mais de 100 profissionais de tecnologia impulsionados</strong> — de desenvolvedores travados em reuniões a founders fechando negócios em inglês.</div>
+                </div>
 
-      <p>
-        O foco é simples: construção sólida de pronúncia e compreensão desde
-        o primeiro dia — para que o estudo finalmente se converta em segurança real.
-      </p>
+                <h3 style="margin-top: 28px;">Se você não me conhece:</h3>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/lucascampospn/" target="_blank" rel="noopener noreferrer" class="social-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                        Instagram: @lucascampospn
+                    </a>
+                    <a href="https://www.youtube.com/@lucascampos4237" target="_blank" rel="noopener noreferrer" class="social-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2C2 8.8 2 12 2 12s0 3.2.4 4.8a2.5 2.5 0 0 0 1.8 1.8c1.6.4 7.8.4 7.8.4s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8c.4-1.6.4-4.8.4-4.8s0-3.2-.4-4.8Z"/></svg>
+                        YouTube: @lucascampos4237
+                    </a>
+                </div>
+            </div>
+        </section>
 
-      <p class="text-xl font-semibold text-glow-purple">
-        Aqui eu não ensino você a estudar mais.
-      </p>
+        <!-- ═══ QUEM EU JÁ AJUDEI ═══ -->
+        <section>
+            <div class="container">
+                <h3>Quem já passou por aqui:</h3>
+                <ul class="bullet-list">
+                    <li><strong>Devs e Engenheiros de Software:</strong> Passaram a superar entrevistas internacionais sem travar no listening.</li>
+                    <li><strong>Founders &amp; Empreendedores:</strong> Ganharam a confiança necessária para apresentar pitches e negociar com investidores estrangeiros.</li>
+                    <li><strong>Especialistas em Cloud, Dados e Cibersegurança:</strong> Assumiram o protagonismo nas calls com times globais sem medo de errar.</li>
+                    <li><strong>Criadores e Editores de Vídeo:</strong> Expandiram a carteira para clientes internacionais comunicando-se com naturalidade.</li>
+                </ul>
+            </div>
+        </section>
 
-      <p class="text-xl font-semibold text-white">
-        Eu ensino você a estruturar o aprendizado da forma correta.
-      </p>
+        <hr class="divider" />
 
-      <p>
-        Para que ele finalmente se transforme em clareza, confiança e fluência real.
-      </p>
+        <!-- ═══ CTA PRINCIPAL ═══ -->
+        <section id="cta-final">
+            <div class="container">
+                <div class="cta-section">
+                    <h3>Aplicar para minha MENTORIA, que já acelerou o inglês de mais de 100 pessoas.</h3>
+                    <a href="https://wa.me/5515981298236?text=Ol%C3%A1%2C%20quero%20ficar%20fluente%20em%20ingl%C3%AAs."
+                       target="_blank" rel="noopener noreferrer"
+                       class="btn-primary">
+                        <!-- Ícone WhatsApp -->
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                        </svg>
+                        Quero Aplicar Agora
+                    </a>
+                </div>
 
-    </div>
-  </div>
-</section>
+                <div class="alert-box">
+                    <p><strong class="red-text">ATENÇÃO: NÃO CLIQUE NO LINK SE VOCÊ:</strong></p>
+                    <ul class="bullet-list x-list" style="margin-top: 8px;">
+                        <li class="red-text">É totalmente iniciante no inglês (mal consegue ler uma frase simples).</li>
+                        <li class="red-text">Só busca aulas de gramática tradicional e listas de exercícios.</li>
+                        <li class="red-text">Quer um curso gravado sem prática nenhuma de conversação ao vivo.</li>
+                        <li class="red-text">Não está disposto a aplicar o método com consistência e quer resultado sem esforço.</li>
+                    </ul>
+                    <p style="margin-top: 12px; font-weight: 600; font-size: 0.9rem;">—&gt; (Leia o texto vermelho antes de clicar.)</p>
+                </div>
 
- <!-- PARA QUEM FUNCIONA -->
-<section class="py-32 bg-card/40">
-  <div class="max-w-5xl mx-auto px-6">
+                <div style="text-align: center; margin-top: 28px;">
+                    <a href="https://wa.me/5515981298236?text=Ol%C3%A1%2C%20quero%20ficar%20fluente%20em%20ingl%C3%AAs."
+                       target="_blank" rel="noopener noreferrer"
+                       class="btn-secondary">
+                        <!-- Ícone WhatsApp -->
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                        </svg>
+                        FALE COMIGO
+                    </a>
+                </div>
+            </div>
+        </section>
 
-    <h2 class="text-3xl md:text-5xl font-bold mb-16 text-center">
-      Para quem isso funciona de verdade?
-    </h2>
+        <hr class="divider" />
 
-    <div class="max-w-2xl mx-auto text-center text-gray-300 text-lg space-y-12">
+        <!-- ═══ FAQ ═══ -->
+        <section>
+            <div class="container">
+                <span class="section-label">Dúvidas</span>
+                <h2>FAQ / Perguntas Frequentes</h2>
 
-      <div class="space-y-5">
-        <p class="font-semibold text-white">Funciona para quem:</p>
-        <p>• Já estudou inglês por meses (ou anos)</p>
-        <p>• Já investiu em cursos, aplicativos ou métodos tradicionais</p>
-        <p>• Já tentou fazer “do jeito certo”</p>
-        <p>• Percebeu que estudar não está se convertendo em segurança para falar</p>
-      </div>
+                <div class="faq-item">
+                    <p class="faq-question">Você vai fazer o trabalho por mim?</p>
+                    <p class="faq-answer"><span class="arrow">↳</span> <strong>Não.</strong> Eu te entrego a metodologia correta e conduzo simulações práticas e estratégicas de conversação. O progresso exige o seu empenho diário. É um programa para quem quer autonomia, não dependência.</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-question">E se o meu inglês for fraco demais para a mentoria?</p>
+                    <p class="faq-answer"><span class="arrow">↳</span> Se você não consegue ler frases simples, este ainda não é o momento ideal. Acompanhe os meus vídeos no YouTube para começar a progredir.</p>
+                </div>
+            </div>
+        </section>
 
-      <div class="space-y-5">
-        <p class="font-semibold text-white">Aqui entram pessoas que:</p>
-        <p>• Entendem bastante coisa, mas travam ao falar</p>
-        <p>• Sentem que sempre estão começando do zero</p>
-        <p>• Estudam sem clareza de progresso real</p>
-        <p>• Querem sair da sobrevivência e ganhar confiança</p>
-      </div>
+        <!-- ═══ FECHAMENTO ═══ -->
+        <section>
+            <div class="container">
+                <div class="closing-block">
+                    <p>Te vejo do outro lado!</p>
+                    <p>Um abraço,</p>
+                    <p class="signature">Lucão — Brasileiro Gringo</p>
+                    <p style="font-size: 0.9rem; color: var(--cinza-texto); margin-top: 4px;">Metodologia de listening e speaking.</p>
+                </div>
+            </div>
+        </section>
+    </main>
 
-    </div>
-
-    <div class="mt-20 text-center max-w-2xl mx-auto">
-      <p class="text-xl text-gray-400">
-        O ponto em comum não é o nível de inglês.
-      </p>
-
-      <p class="text-2xl font-semibold text-glow-purple mt-6">
-        É maturidade no aprendizado.
-      </p>
-    </div>
-
-  </div>
-</section>
-
-    <!-- FILTRO -->
-<section class="py-32 relative">
-  <div class="absolute inset-0 bg-gradient-radial-purple opacity-30"></div>
-
-  <div class="relative z-10 max-w-3xl mx-auto px-6 text-center">
-
-    <h2 class="text-3xl md:text-5xl font-bold mb-16">
-      Não avance se você:
-    </h2>
-
-    <div class="space-y-8 text-lg text-gray-300">
-
-      <p>1. Quer aprender inglês apenas por curiosidade, sem compromisso real.</p>
-
-      <p>2. Busca um atalho milagroso para falar fluente em poucas semanas.</p>
-
-      <p>3. Acredita que fluência vem apenas decorando regras gramaticais.</p>
-
-      <p>4. Não está disposto a seguir um processo estruturado e progressivo.</p>
-
-    </div>
-
-    <div class="mt-20 space-y-6">
-
-      <p class="text-xl text-white font-semibold">
-        Existe um pequeno grupo de pessoas que parou de acumular conteúdo
-        e começou a construir habilidade de verdade.
-      </p>
-
-      <p class="text-gray-400">
-        Pessoas que não estudam mais horas.
-        <br>
-        Estudam com estrutura.
-      </p>
-
-      <p class="text-2xl font-semibold text-glow-purple">
-        E é por isso que evoluem.
-      </p>
-
-    </div>
-
-  </div>
-</section>
-
-    <!-- CTA FINAL -->
-    <section class="py-28 bg-card/40 text-center">
-      <div class="max-w-3xl mx-auto px-6">
-        <h2 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-          Se isso fez sentido para você —
-          <span class="text-glow-purple glow-purple-text">
-            vamos construir sua fluência juntos.
-          </span>
-        </h2>
-
-        <p class="text-gray-400 mb-10">
-          Com estrutura. Com clareza. E com leveza.
-        </p>
-
-        <a
-          href="https://wa.me/5515981298236?text=Ol%C3%A1%2C%20quero%20conhecer%20mais%20sobre%20a%20mentoria"
-          target="_blank"
-          class="inline-flex items-center justify-center gap-3 bg-gradient-to-r from-glow-purple-light via-glow-purple to-glow-purple-dark text-white font-bold px-10 py-4 rounded-xl transition transform hover:scale-105 glow-purple"
-        >
-        <svg xmlns="http://www.w3.org/2000/svg" 
-     viewBox="0 0 32 32" 
-     class="text-white w-6 h-6"
-     fill="currentColor">
-  <path d="M16 .4C7.4.4.4 7.4.4 16c0 2.8.7 5.5 2.1 7.9L.3 31.7l8-2.1c2.3 1.3 4.9 2 7.7 2 8.6 0 15.6-7 15.6-15.6S24.6.4 16 .4zm0 28.6c-2.4 0-4.7-.6-6.8-1.8l-.5-.3-4.8 1.3 1.3-4.7-.3-.5C3.7 20.8 3 18.5 3 16 3 8.8 8.8 3 16 3s13 5.8 13 13-5.8 13-13 13zm7.3-9.5c-.4-.2-2.2-1.1-2.5-1.2-.3-.1-.6-.2-.8.2-.2.4-.9 1.2-1.1 1.4-.2.2-.4.2-.8.1-.4-.2-1.6-.6-3-1.9-1.1-1-1.9-2.3-2.1-2.7-.2-.4 0-.6.1-.8.1-.1.4-.4.5-.6.2-.2.2-.4.3-.6.1-.2 0-.5 0-.6 0-.2-.8-1.9-1.1-2.6-.3-.7-.6-.6-.8-.6h-.7c-.2 0-.6.1-.9.4-.3.3-1.2 1.2-1.2 3 0 1.8 1.3 3.5 1.5 3.8.2.3 2.6 4 6.3 5.6.9.4 1.6.6 2.2.8.9.3 1.7.2 2.4.1.7-.1 2.2-.9 2.5-1.7.3-.8.3-1.6.2-1.7-.1-.1-.3-.2-.7-.4z"/>
-</svg>
-          Falar comigo no WhatsApp
-        </a>
-
-        <p class="text-sm text-gray-500 mt-6">
-          Resposta direta. Sem enrolação.
-        </p>
-      </div>
-    </section>
-
-    <footer class="py-8 border-t border-border/50 text-center text-sm text-gray-500">
-      © 2026 Mentoria de Inglês. Todos os direitos reservados.
+    <footer class="site-footer">
+        <div class="container">
+            <p>Brasileiro Gringo &copy; 2026 — Metodologia de listening e speaking.</p>
+        </div>
     </footer>
 
-  </body>
+</body>
 </html>
