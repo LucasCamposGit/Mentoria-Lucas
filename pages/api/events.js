@@ -19,15 +19,34 @@ export default async function handler(req, res) {
   } = req.body || {}
 
   if (!event || typeof event !== 'string') {
+    console.warn('Invalid event name in /api/events request:', {
+      method: req.method,
+      body: req.body,
+      headers: req.headers,
+    })
     return res.status(400).json({ error: 'Invalid event name' })
   }
 
   if (metadata !== undefined && (typeof metadata !== 'object' || Array.isArray(metadata))) {
+    console.warn('Invalid metadata format in /api/events request:', {
+      method: req.method,
+      body: req.body,
+      headers: req.headers,
+    })
     return res.status(400).json({ error: 'Invalid metadata format, expected object' })
   }
 
   if (!supabaseServer) {
-    console.error('Supabase client is not configured. Check SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY.')
+    console.error('Supabase client is not configured. Check SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY or SUPABASE_ANON_KEY.', {
+      hasSupabaseUrl: Boolean(process.env.SUPABASE_URL),
+      hasServiceRoleKey: Boolean(process.env.SUPABASE_SERVICE_ROLE_KEY),
+      hasAnonKey: Boolean(process.env.SUPABASE_ANON_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY),
+      requestBody: req.body,
+      requestHeaders: {
+        host: req.headers.host,
+        'user-agent': req.headers['user-agent'],
+      },
+    })
     return res.status(500).json({
       error: 'Supabase client is not configured. Set SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY in your environment.',
     })
@@ -49,9 +68,6 @@ export default async function handler(req, res) {
     ])
 
     if (error) {
-      console.error('Supabase insert error:', error)
-
-      // Helpful diagnostics for common misconfiguration: anon key used in SERVICE_ROLE var
       const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY
       const anonKey = process.env.SUPABASE_ANON_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
       let detectedRole = null
@@ -62,8 +78,27 @@ export default async function handler(req, res) {
           detectedRole = payload.role || payload?.role
         }
       } catch (e) {
-        // ignore decode errors
+        console.warn('Supabase key decode failed while diagnosing insert error:', e?.message || e)
       }
+
+      console.error('Supabase insert error:', {
+        error,
+        event,
+        visitor_id,
+        session_id,
+        page,
+        video,
+        utm_source,
+        utm_medium,
+        utm_campaign,
+        requestBody: req.body,
+        environment: {
+          hasSupabaseUrl: Boolean(process.env.SUPABASE_URL),
+          hasServiceRoleKey: Boolean(serviceRoleKey),
+          hasAnonKey: Boolean(anonKey),
+          detectedRole,
+        },
+      })
 
       const extra = (detectedRole && detectedRole !== 'service_role')
         ? 'Configured SUPABASE_SERVICE_ROLE_KEY appears to be an anon key (not service_role). Use the service role key for server inserts.'
@@ -74,7 +109,14 @@ export default async function handler(req, res) {
 
     return res.status(200).json({ status: 'ok', data })
   } catch (err) {
-    console.error('Unexpected error while inserting event into Supabase:', err)
+    console.error('Unexpected error while inserting event into Supabase:', {
+      error: err,
+      requestBody: req.body,
+      requestHeaders: {
+        host: req.headers.host,
+        'user-agent': req.headers['user-agent'],
+      },
+    })
     return res.status(500).json({ error: 'Unexpected server error', details: err?.message || err })
   }
 }
