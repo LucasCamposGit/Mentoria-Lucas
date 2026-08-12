@@ -6,6 +6,15 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' })
   }
 
+  console.info('/api/events request received', {
+    method: req.method,
+    host: req.headers.host,
+    origin: req.headers.origin,
+    referer: req.headers.referer,
+    userAgent: req.headers['user-agent'],
+    body: req.body,
+  })
+
   const {
     event,
     metadata,
