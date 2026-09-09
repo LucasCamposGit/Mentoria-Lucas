@@ -6,7 +6,26 @@ import WhatsappButton from '../components/WhatsappButton'
 
 let hasTrackedPageView = false
 
-export default function Home() {
+function getVariantFromCookie(cookieHeader) {
+  const cookies = (cookieHeader || '').split(';')
+  const variantCookie = cookies.find((cookie) => cookie.trim().startsWith('ab_variant='))
+  const variant = variantCookie?.split('=')[1]
+
+  return variant === 'B' ? 'B' : variant === 'A' ? 'A' : null
+}
+
+export function getServerSideProps({ req, res, query }) {
+  const requestedVariant = query.ab_variant === 'B' || query.ab_variant === 'A'
+    ? query.ab_variant
+    : null
+  const variant = requestedVariant || getVariantFromCookie(req.headers.cookie) || (Math.random() < 0.5 ? 'A' : 'B')
+
+  res.setHeader('Set-Cookie', `ab_variant=${variant}; Max-Age=2592000; Path=/; SameSite=Lax${req.headers['x-forwarded-proto'] === 'https' ? '; Secure' : ''}`)
+
+  return { props: { variant } }
+}
+
+export default function Home({ variant }) {
   useEffect(() => {
     if (hasTrackedPageView) {
       return
@@ -15,13 +34,16 @@ export default function Home() {
     hasTrackedPageView = true
 
     track('page_view', {
+      variant,
       pathname: window.location.pathname,
       referrer: document.referrer,
       userAgent: navigator.userAgent,
       screenWidth: window.screen?.width,
       screenHeight: window.screen?.height,
     })
-  }, [])
+  }, [variant])
+
+  const isVariantB = variant === 'B'
 
   return (
     <>
@@ -39,9 +61,9 @@ export default function Home() {
 
           <div className="relative z-10 max-w-5xl mx-auto px-6">
             <h2 className="text-3xl md:text-5xl font-bold mb-4">
-              Mais aulas só te afundam em informação solta.
-
-              <span className="text-glow-purple glow-purple-text"> Direção é o que te faz andar.</span>
+              {isVariantB
+                ? 'Aprenda a entender o inglês falado sem precisar ler legendas ou travar na hora de responder.'
+                : 'Mais aulas só te afundam em informação solta. Direção é o que te faz andar.'}
             </h2>
 
             <p className="text-gray-400 max-w-2xl mx-auto mb-12">
@@ -61,11 +83,12 @@ export default function Home() {
               </div>
             </div>
 
-            <WhatsappButton
+              <WhatsappButton
               buttonName="Fale comigo agora"
               page="home"
               phone="5515981298236"
               position="hero"
+                variant={variant}
             >
               Fale comigo agora
             </WhatsappButton>
@@ -166,6 +189,7 @@ export default function Home() {
               page="home"
               phone="5515981298236"
               position="footer"
+              variant={variant}
             >
               Falar comigo no WhatsApp
             </WhatsappButton>

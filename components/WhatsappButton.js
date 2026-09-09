@@ -6,7 +6,7 @@ function getWhatsAppUrl(phone, message = DEFAULT_MESSAGE) {
   return `https://wa.me/${phone}?text=${message}`
 }
 
-export default function WhatsappButton({ buttonName, page, phone, position, children }) {
+export default function WhatsappButton({ buttonName, page, phone, position, variant, children }) {
   async function handleClick(event) {
     event.preventDefault()
 
@@ -15,6 +15,7 @@ export default function WhatsappButton({ buttonName, page, phone, position, chil
       page,
       phone,
       position,
+      variant,
     }
 
     const url = getWhatsAppUrl(phone)
