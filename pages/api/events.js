@@ -46,7 +46,7 @@ export default async function handler(req, res) {
   }
 
   if (!supabaseServer) {
-    console.error('Supabase client is not configured. Check SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY or SUPABASE_ANON_KEY.', {
+    console.warn('Supabase client is not configured. Tracking request accepted but skipped until environment variables are set.', {
       hasSupabaseUrl: Boolean(process.env.SUPABASE_URL),
       hasServiceRoleKey: Boolean(process.env.SUPABASE_SERVICE_ROLE_KEY),
       hasAnonKey: Boolean(process.env.SUPABASE_ANON_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY),
@@ -56,8 +56,12 @@ export default async function handler(req, res) {
         'user-agent': req.headers['user-agent'],
       },
     })
-    return res.status(500).json({
-      error: 'Supabase client is not configured. Set SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY in your environment.',
+
+    return res.status(200).json({
+      status: 'skipped',
+      message: 'Supabase is not configured. Event was accepted but not stored.',
+      event,
+      metadata: metadata || {},
     })
   }
 
